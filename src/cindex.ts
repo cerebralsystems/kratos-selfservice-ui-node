@@ -80,4 +80,6 @@ async function scanMeasures (directoryName: string) {
   dlMeasures.sort((a: any, b: any) => a.date - b.date);
   vpnMeasures.sort((a: any, b: any) => a.date - b.date);
 }
-if (process.env.MEASURE_DIR) { scanMeasures(process.env.MEASURE_DIR); }
+if (process.env.MEASURE_DIR) {
+  scanMeasures(process.env.MEASURE_DIR);
+}
