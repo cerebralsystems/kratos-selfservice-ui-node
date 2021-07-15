@@ -12,6 +12,7 @@ import * as stubs from './stub/payloads';
 import settingsHandler from './routes/settings';
 import verifyHandler from './routes/verification';
 import recoveryHandler from './routes/recovery';
+import geolocationHandler from './routes/geolocation';
 import morgan from 'morgan';
 import * as https from 'https';
 import * as fs from 'fs';
@@ -24,6 +25,7 @@ export const protect =
 
 export const app = express();
 app.use(morgan('tiny'));
+app.use(express.json());
 app.use(cookieParser());
 app.set('view engine', 'hbs');
 
@@ -86,15 +88,23 @@ if (process.env.NODE_ENV === 'stub') {
   app.get('/settings', protect, settingsHandler);
   app.get('/verify', verifyHandler);
   app.get('/recovery', recoveryHandler);
+  app.post('/geolocation', geolocationHandler);
 }
 
 app.get('/health', (_: Request, res: Response) => res.send('ok'));
 app.get('/debug', debug);
 
+<<<<<<< HEAD
 /*app.get('*', (_: Request, res: Response) => {
   res.redirect(config.baseUrl);
 });
 */
+=======
+// app.get('*', (_: Request, res: Response) => {
+//   res.redirect(config.baseUrl);
+// });
+
+>>>>>>> dc2d2fb0b2ff5fb610cc0bf670084fb5d0ad49c7
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(err.stack);
   res.status(500).render('error', {
