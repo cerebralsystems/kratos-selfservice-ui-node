@@ -6,5 +6,5 @@ export default (
   next: NextFunction
 ) => {
   // Render the data using a view (e.g. Jade Template):
-  res.render('cnetwork', {});
+  res.render('network', {});
 };
