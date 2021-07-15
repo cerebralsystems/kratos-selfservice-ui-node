@@ -58,7 +58,7 @@ export const dashboard = async (req: Request, res: Response) => {
   let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress;
   const traits: any = ai.claims.session.identity.traits;
 
-  if (typeof ip !== 'undefined') {
+  if (typeof ip !== 'undefined' && ai.claims.session.identity.schema_id === 'default') {
     if (Array.isArray(ip)) {
       ip = ip[0];
     }
