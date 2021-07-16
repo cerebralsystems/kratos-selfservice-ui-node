@@ -10,6 +10,8 @@ const ValidateIPaddress = (ipAddress: string) => ipAddress.match(/^(25[0-5]|2[0-
 export default async (req: Request, res: Response) => {
   const ai = authInfo(req as UserRequest);
 
+  console.log('AY-YAY-YAY! ARRIBA!', ai);
+
   let ip: string | undefined = req.connection.remoteAddress?.split(':').slice(-1)[0];
   if (ip !== undefined && ai.claims.session.identity.schema_id === 'default') {
     if (Array.isArray(ip)) {
@@ -41,7 +43,7 @@ const getNearestNeuron = async (data: any) => {
   return neuron;
 };
 
-const updateLocationByIP = async (coords : any, ip4: string, ai: { claims: any, raw: any }) => {
+const updateLocationByIP = async (coords: any, ip4: string, ai: { claims: any, raw: any }) => {
   const traits: any = ai.claims.session.identity.traits;
 
   if (ip4 !== traits.system.ip4) {
