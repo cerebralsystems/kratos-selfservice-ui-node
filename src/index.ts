@@ -5,7 +5,6 @@ import loginHandler from './routes/login';
 import registrationHandler from './routes/registration';
 import errorHandler from './routes/error';
 import dashboard from './routes/dashboard';
-import geolocation from './routes/geolocation';
 import debug from './routes/debug';
 import config, { SECURITY_MODE_JWT } from './config';
 import { getTitle, onlyNodes, toUiNodePartial } from './helpers/ui';
