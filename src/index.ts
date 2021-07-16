@@ -19,7 +19,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 import protectSimple from './middleware/simple';
 import protectOathkeeper from './middleware/oathkeeper';
-import bodyParser from 'body-parser';
 
 export const protect =
   config.securityMode === SECURITY_MODE_JWT ? protectOathkeeper : protectSimple;
@@ -90,7 +89,6 @@ if (process.env.NODE_ENV === 'stub') {
   app.get('/settings', protect, settingsHandler);
   app.get('/verify', verifyHandler);
   app.get('/recovery', recoveryHandler);
-  app.post('/geolocation', geolocation);
 }
 
 app.get('/health', (_: Request, res: Response) => res.send('ok'));
