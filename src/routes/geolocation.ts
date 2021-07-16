@@ -25,6 +25,8 @@ const getNearestNeuron = async (data: any) => {
 export default async (req: Request, res: Response) => {
   const ai = authInfo(req as UserRequest);
 
+  console.log('AY-YAY-YAY! ARRIBA!', ai);
+
   const { latitude: lat, longitude: lng } = req.body.location.coords;
   if (lat && lng) {
     console.log(await getNearestNeuron({ lat, lng }));
@@ -32,8 +34,12 @@ export default async (req: Request, res: Response) => {
     // Generate new PAC file here
   }
 
+  if (ai.claims.session.identity.schema_id === 'default') {
+    console.log('HUH?');
+  }
+
   const ip: string | undefined = req.connection.remoteAddress?.split(':').slice(-1)[0];
-  if (ip !== undefined && ai.claims.session.identity.schema_id === 'default') {
+  if (ip !== undefined) {
     if (typeof ip === 'string' && !!ValidateIPaddress(ip)) {
       updateLocationByIP(ip, ai);
     } else if (Array.isArray(ip) && !!ValidateIPaddress(ip[0])) {
