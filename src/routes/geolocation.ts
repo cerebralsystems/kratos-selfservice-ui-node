@@ -10,8 +10,6 @@ const ValidateIPaddress = (ipAddress: string) => ipAddress.match(/^(25[0-5]|2[0-
 export default async (req: Request, res: Response) => {
   const ai = authInfo(req as UserRequest);
 
-  console.log('AY-YAY-YAY! ARRIBA!', ai);
-
   let ip: string | undefined = req.connection.remoteAddress?.split(':').slice(-1)[0];
   if (ip !== undefined && ai.claims.session.identity.schema_id === 'default') {
     if (Array.isArray(ip)) {
@@ -38,8 +36,6 @@ const getNearestNeuron = async (data: any) => {
   }))
     .json();
 
-  console.log(neuron);
-
   return neuron;
 };
 
@@ -64,7 +60,7 @@ const updateLocationByIP = async (coords: any, ip4: string, ai: { claims: any, r
       const updateIdentityResponse = await kratos.updateIdentity(ai.claims.session.identity.id, updateIdentity);
       ai.claims.session.identity = updateIdentityResponse.data;
     } catch (error) {
-      console.log(error.response);
+      console.error(error.response);
     }
   }
 };
