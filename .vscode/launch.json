@@ -21,6 +21,7 @@
                 "KRATOS_BROWSER_URL": "http://127.0.0.1:4433/",
                 "KRATOS_PUBLIC_URL": "http://127.0.0.1:4433/",
                 "KRATOS_ADMIN_URL": "http://127.0.0.1:4434/",
+                "FIRST_MILE_LOC": "http://localhost:8080/",
                 "PORT": "4455",
                 "PROJECT_NAME": "Cerebral Systems",
                 "MEASURE_DIR":"../measure_files/cron-measure",

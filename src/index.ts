@@ -4,7 +4,8 @@ import handlebars from 'express-handlebars';
 import loginHandler from './routes/login';
 import registrationHandler from './routes/registration';
 import errorHandler from './routes/error';
-import { dashboard, geolocation } from './routes/dashboard';
+import dashboard from './routes/dashboard';
+import geolocation from './routes/geolocation';
 import debug from './routes/debug';
 import config, { SECURITY_MODE_JWT } from './config';
 import { getTitle, onlyNodes, toUiNodePartial } from './helpers/ui';
@@ -83,7 +84,7 @@ if (process.env.NODE_ENV === 'stub') {
 } else {
   app.get('/', protect, dashboard);
   app.get('/dashboard', protect, dashboard);
-  app.get('/auth/registration', registrationHandler);
+  // app.get('/auth/registration', registrationHandler);
   app.get('/auth/login', loginHandler);
   app.get('/error', errorHandler);
   app.get('/settings', protect, settingsHandler);
@@ -100,7 +101,7 @@ app.get('/debug', debug);
 // });
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  console.error(err.stack);
+  // console.error(err.stack);
   res.status(500).render('error', {
     message: JSON.stringify(err, null, 2)
   });
