@@ -1,7 +1,7 @@
 import * as Index from './index';
 import network from './routes/network';
 import { metrics, metric } from './routes/metrics';
-import { geolocation } from './routes/dashboard';
+import geolocation from './routes/geolocation';
 
 const app = Index.app;
 const protect = Index.protect;
