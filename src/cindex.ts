@@ -7,7 +7,7 @@ const app = Index.app;
 const protect = Index.protect;
 
 // cerebral routes
-app.post('/geolocation', geolocation);
+app.post('/geolocation', protect, geolocation);
 
 app.get('/network', protect, network);
 

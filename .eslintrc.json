@@ -20,6 +20,7 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "indent": "warn",
         "semi": ["warn", "always"],
         "no-prototype-builtins": 0,
         "no-case-declarations": 0,

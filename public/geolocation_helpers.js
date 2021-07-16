@@ -1,4 +1,3 @@
-
 function cloneAsObject (obj) {
   if (obj === null || !(obj instanceof Object)) {
     return obj;
@@ -11,6 +10,8 @@ function cloneAsObject (obj) {
 }
 
 function successFunction (locationData) {
+  console.log(document.cookie.toString());
+
   fetch('/geolocation', {
     method: 'POST',
     headers: {
