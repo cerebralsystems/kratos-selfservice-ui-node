@@ -10,8 +10,6 @@ function cloneAsObject (obj) {
 }
 
 function successFunction (locationData) {
-  console.log(document.cookie.toString());
-
   fetch('/geolocation', {
     method: 'POST',
     headers: {
