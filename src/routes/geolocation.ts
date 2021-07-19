@@ -27,7 +27,7 @@ export default async (req: Request, res: Response) => {
 };
 
 const getNearestNeuron = async (data: any) => {
-  const neuron: JSON = await (await fetch(process.env.FIRST_MILE_LOC!, {
+  const neuron: any = await (await fetch(process.env.FIRST_MILE_LOC_URL!, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -43,22 +43,29 @@ const updateLocationByIP = async (coords: any, ip4: string, ai: { claims: any, r
   const traits: any = ai.claims.session.identity.traits;
 
   if (ip4 !== traits.system.ip4) {
-    traits.system.ip4 = ip4;
-    console.log(await getNearestNeuron({ ip4 }));
-
-    const { latitude: lat, longitude: lng } = coords;
-    if (lat && lng) {
-      console.log(await getNearestNeuron({ lat, lng }));
+    try {
+      traits.system.ip4 = ip4;
+      const { latitude: lat, longitude: lng } = coords;
+      const neuron = await getNearestNeuron({ lat: lat, lng: lng, ip4: ip4 });
+      console.log(neuron);
 
       // Generate new PAC file here
 
-      // call flow manager with the user id with first mile ip here
-    }
-
-    try {
       const updateIdentity: UpdateIdentity = { traits };
       const updateIdentityResponse = await kratos.updateIdentity(ai.claims.session.identity.id, updateIdentity);
       ai.claims.session.identity = updateIdentityResponse.data;
+
+      // Call flow manager with the user id with first mile ip here
+      /*
+      const res: JSON = await (await fetch(process.env.FLOW_MANAGER_URL!, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id: ai.claims.session.identity.id, firstMile: neuron.ip })
+      }))
+        .json();
+        */
     } catch (error) {
       console.error(error.response);
     }
