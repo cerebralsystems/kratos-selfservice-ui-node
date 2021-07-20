@@ -9,16 +9,21 @@ function cloneAsObject (obj) {
   return temp;
 }
 
-function successFunction (locationData) {
+function postLocationData (data) {
   fetch('/geolocation', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ location: cloneAsObject(locationData) })
+    body: JSON.stringify({ location: data })
   });
 }
 
 if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(successFunction, console.error);
-};
+  navigator.geolocation.getCurrentPosition(
+    (locationData) => postLocationData(cloneAsObject(locationData)),
+    () => postLocationData({ coords: { latitude: null, longitude: null } })
+  );
+} else {
+  postLocationData({ coords: { latitude: null, longitude: null } });
+}
