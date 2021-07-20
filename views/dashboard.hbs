@@ -1,11 +1,16 @@
 <div class="content">
+    <header>
+        <link rel="stylesheet" href="styles/gradient-button.css"></link>
+        <link rel="stylesheet" href="styles/dashboard.css" ></link>
+    </header>
     {{> header}}
     <div class="page-container">
         <div class="card padding">
             <h2 class="greeting">Welcome, <span class="user-identifier">{{session.identity.traits.email}}</span>!</h2>
             <p>Allowing geolocation can improve performance but isn't necessary. Click below to prompt geolocation permissions</p>
             <h2 class="underline">Step 0</h2>
-            <p>please copy your .pac file URL to your clipboard: <span id="pac-file" class="pac-file">https://{{url}}/pac/{{session.identity.id}}.pac</span></p>
+            <p>please copy your .pac file URL to your clipboard:</p>
+            <button id="copy-button" class="gradient-button gradient-button-1" value="https://{{url}}/pac/{{session.identity.id}}.pac">Copy .pac file to Clipboard</button>
         </div>
         <div class="flex">
             <div class="card padding">
@@ -78,7 +83,6 @@
             </div>
         </div>
     </div>
-    <link rel="stylesheet" href="styles/dashboard.css" ></link>
     <script src="code/geolocation-helpers.js"></script>
-    <script src="code/copy-pac-to-clipboard.js"></script>
+    <script src="code/copy-pac-url-to-clipboard.js"></script>
 </div>
