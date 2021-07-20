@@ -1,6 +1,7 @@
 <div class="content">
     {{> header}}
     <div class="page-container">
+<<<<<<< HEAD
         <h2 class="greeting">Welcome, <span class="user-identifier">{{session.identity.traits.email}}</span>!</h2>
         <p>Please allow browser geolocation to improve performance.</p>
         <p>
@@ -72,6 +73,86 @@
                 Don't forget to Save
             </li>
         </ol>
+=======
+        <div class="card padding">
+            <h2 class="greeting">Welcome, <span class="user-identifier">{{session.identity.traits.email}}</span>!</h2>
+            <p>Allowing geolocation can improve performance but isn't necessary. Click below to prompt geolocation permissions</p>
+            <h2 class="underline">Step 0</h2>
+            <p>please copy your .pac file URL to your clipboard: <span id="pac-file" class="pac-file">https://{{url}}/pac/{{session.identity.id}}.pac</span></p>
+        </div>
+        <div class="flex">
+            <div class="card padding">
+                <h2>
+                    Mac:
+                </h2>
+                <ol>
+                    <li>
+                        Go to System Preferences
+                        <div>
+                            <img class="instruction-image mac-image" src="images/Mac_step_1.jpg" alt="">
+                        </div>
+                    </li>
+                    <li>
+                        Go to Network Settings
+                        <div>
+                            <img class="instruction-image mac-image" src="images/Mac_step_2.jpg" alt="">
+                        </div>
+                    </li>
+                    <li>
+                        Click on advanced
+                        <div>
+                            <img class="instruction-image mac-image" src="images/Mac_step_3.jpg" alt="">
+                        </div>
+                    </li>
+                    <li>
+                        Go to the Proxies tab
+                    </li>
+                    <li>
+                        Click on Automatic Proxy Configuration
+                    </li>
+                    <li>
+                        Paste your .pac file URL into the URL field
+                        <div>
+                            <img class="instruction-image mac-image" src="images/Mac_steps_456.jpg" alt="">
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <div class="card padding">
+                <h2>
+                    Windows:
+                </h2>
+                <ol>
+                    <li>
+                        Open Settings
+                    </li>
+                    <li>
+                        Click Network & Internet
+                        <div>
+                            <img class="instruction-image windows-image" src="images/Windows_10_steps_12.jpg" alt="">
+                        </div>
+                    </li>
+                    <li>
+                        Click Proxy
+                    </li>
+                    <li>
+                        In the Automatic Proxy Setup section, set the Use Setup Script switch to On.
+                    </li>
+                    <li>
+                        Paste your .pac file URL into the script address field
+                        <div>
+                            <img class="instruction-image windows-image" src="images/Windows_10_steps_3456.jpg" alt="">
+                        </div>
+                    </li>
+                    <li>
+                        Don't forget to Save
+                    </li>
+                </ol>
+            </div>
+        </div>
+>>>>>>> 6e0ebccd828961a627f3d077a01dbf1eec9195c4
     </div>
-    <script src="geolocation_helpers.js"></script>
+    <link rel="stylesheet" href="styles/dashboard.css" ></link>
+    <script src="code/geolocation_helpers.js"></script>
+    <script src="code/copy-pac-to-clipboard.js"></script>
 </div>
