@@ -42,7 +42,7 @@ const getNearestNeuron = async (data: any) => {
 const updateLocationByIP = async (coords: any, ip4: string, ai: { claims: any, raw: any }) => {
   const traits: any = ai.claims.session.identity.traits;
 
-  if (ip4 !== traits.system.ip4) {
+  if (ip4.startsWith('127') || ip4 !== traits.system.ip4) {
     try {
       traits.system.ip4 = ip4;
       const { latitude: lat, longitude: lng } = coords;
@@ -56,8 +56,8 @@ const updateLocationByIP = async (coords: any, ip4: string, ai: { claims: any, r
       ai.claims.session.identity = updateIdentityResponse.data;
 
       // Call flow manager with the user id with first mile ip here
-      /*
-      const res: JSON = await (await fetch(process.env.FLOW_MANAGER_URL!, {
+
+      const res: JSON = await (await fetch(process.env.FLOW_MANAGER_URL! + 'flow/createFlow', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -65,7 +65,6 @@ const updateLocationByIP = async (coords: any, ip4: string, ai: { claims: any, r
         body: JSON.stringify({ id: ai.claims.session.identity.id, firstMile: neuron.ip })
       }))
         .json();
-        */
     } catch (error) {
       console.error(error.response);
     }
