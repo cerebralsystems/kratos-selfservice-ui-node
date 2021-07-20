@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import * as path from 'path';
 import * as fs from 'fs';
+import { authInfo, UserRequest } from '../helpers/authInfo';
 const fsp = require('fs').promises;
 
 class Measure {
@@ -14,10 +15,20 @@ const dlMeasures: Measure[] = [];
 const vpnMeasures: Measure[] = [];
 
 export const metrics = async (req: Request, res: Response) => {
+  const ai = authInfo(req as UserRequest);
+  if (ai.claims.session.identity.schema_id === 'default') {
+    res.sendStatus(404);
+    return;
+  }
   res.json({ count: pingMeasures.length });
 };
 
 export const metric = async (req: Request, res: Response) => {
+  const ai = authInfo(req as UserRequest);
+  if (ai.claims.session.identity.schema_id === 'default') {
+    res.sendStatus(404);
+    return;
+  }
   let filename: string | undefined = '';
   let index: number = parseInt(req.params.index);
   if (req.params.type === 'ping') {
