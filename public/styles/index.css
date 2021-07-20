@@ -26,24 +26,16 @@ body {
 body {
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 16px;
-  color: var(--base-light);
-  background: var(--base-dark);
-}
-
-.pac-file {
-  color: #0077ee;
-  text-decoration: underline;
-}
-
-.instruction_image {
-  max-width: 36rem;
+  color: var(--base-dark);
+  background: var(--base-light);
 }
 
 .page-container {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  width: 600px;
+  max-width: 80%;
+  min-width: 600px;
   margin: 0 auto;
 }
 

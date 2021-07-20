@@ -41,12 +41,12 @@ const getNearestNeuron = async (data: any) => {
 
 const updateLocationByIP = async (coords: any, ip4: string, ai: { claims: any, raw: any }) => {
   const traits: any = ai.claims.session.identity.traits;
+  const { latitude: lat, longitude: lng } = coords;
 
   if (ip4 !== traits.system.ip4) {
     traits.system.ip4 = ip4;
     console.log(await getNearestNeuron({ ip4 }));
 
-    const { latitude: lat, longitude: lng } = coords;
     if (lat && lng) {
       console.log(await getNearestNeuron({ lat, lng }));
 
