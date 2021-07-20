@@ -3,9 +3,11 @@
         {{> icon_logo}}
     </a>
     
+    {{#if (eq session.identity.schema_id "admin")}}
     <a href="{{pathPrefix}}network">
-        Network
+        Network, {{session.identity.schema}}
     </a>
+    {{/if}}    
     <div class="icon-actions">
         <div class="settings">
             <a href="{{pathPrefix}}settings">

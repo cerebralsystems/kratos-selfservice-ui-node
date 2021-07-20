@@ -1,10 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
+import { authInfo, UserRequest } from '../helpers/authInfo';
 
-export default (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  // Render the data using a view (e.g. Jade Template):
-  res.render('network', {});
+export default (req: Request, res: Response) => {
+  const ai = authInfo(req as UserRequest);
+  if (ai.claims.session.identity.schema_id === 'admin') { res.render('network', {}); } else res.sendStatus(404);
 };
