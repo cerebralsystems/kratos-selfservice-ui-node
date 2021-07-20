@@ -7,10 +7,6 @@ const app = Index.app;
 const protect = Index.protect;
 
 // cerebral routes
-app.post('/geolocation', protect, geolocation);
-
 app.get('/network', protect, network);
-
 app.get('/metrics/:type/:index', protect, metric);
-
 app.get('/metrics', protect, metrics);

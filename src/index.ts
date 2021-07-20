@@ -18,6 +18,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 import protectSimple from './middleware/simple';
 import protectOathkeeper from './middleware/oathkeeper';
+import network from './routes/network';
+import { metrics, metric } from './routes/metrics';
+import geolocation from './routes/geolocation';
 
 export const protect =
   config.securityMode === SECURITY_MODE_JWT ? protectOathkeeper : protectSimple;
@@ -59,36 +62,16 @@ app.engine(
   })
 );
 
-if (process.env.NODE_ENV === 'stub') {
-  // Setting NODE_ENV to "only-ui" disables all integration and only shows the UI. Useful
-  // when working on CSS or HTML things.
+app.get('/', protect, dashboard);
+app.get('/dashboard', protect, dashboard);
+// app.get('/auth/registration', registrationHandler);
+app.get('/auth/login', loginHandler);
+app.get('/error', errorHandler);
+app.get('/settings', protect, settingsHandler);
+app.get('/verify', verifyHandler);
+app.get('/recovery', recoveryHandler);
 
-  app.get('/auth/registration', (_: Request, res: Response) => {
-    res.render('registration', {
-      password: stubs.registration.methods.password.config,
-      oidc: stubs.registration.methods.oidc.config
-    });
-  });
-  app.get('/auth/login', (_: Request, res: Response) => {
-    res.render('login', {
-      password: stubs.login.methods.password.config,
-      oidc: stubs.login.methods.oidc.config
-    });
-  });
-  app.get('/settings', (_: Request, res: Response) => {
-    res.render('settings', stubs.settings);
-  });
-  app.get('/error', (_: Request, res: Response) => res.render('error'));
-} else {
-  app.get('/', protect, dashboard);
-  app.get('/dashboard', protect, dashboard);
-  // app.get('/auth/registration', registrationHandler);
-  app.get('/auth/login', loginHandler);
-  app.get('/error', errorHandler);
-  app.get('/settings', protect, settingsHandler);
-  app.get('/verify', verifyHandler);
-  app.get('/recovery', recoveryHandler);
-}
+app.post('/geolocation', protect, geolocation);
 
 app.get('/health', (_: Request, res: Response) => res.send('ok'));
 app.get('/debug', debug);
@@ -106,19 +89,4 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 const port = Number(process.env.PORT) || 3000;
 
-const listener = () => {
-  const proto = config.https.enabled ? 'https' : 'http';
-  // console.log(`Listening on ${proto}://0.0.0.0:${port}`);
-  // console.log(`Security mode: ${config.securityMode}`);
-};
-
-if (config.https.enabled) {
-  const options = {
-    cert: fs.readFileSync(config.https.certificatePath),
-    key: fs.readFileSync(config.https.keyPath)
-  };
-
-  https.createServer(options, app).listen(port, listener);
-} else {
-  app.listen(port, listener);
-}
+app.listen(port);

@@ -66,6 +66,7 @@ body {
   box-sizing: border-box;
   justify-content: space-between;
   align-items: center;
+  background-color: rgb(46, 46, 46);
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid var(--primary-main);
 }
@@ -128,6 +129,15 @@ body {
   font-weight: 600;
   line-height: 160%;
   margin-top: 4rem;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.padding {
+  padding: 0 10px 2px 10px;
 }
 
 h4:first-child {
