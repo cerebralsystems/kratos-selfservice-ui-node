@@ -1,41 +1,43 @@
 <div class="content">
     <header>
-        <link rel="stylesheet" href="styles/gradient-button.css"></link>
         <link rel="stylesheet" href="styles/dashboard.css" ></link>
     </header>
     {{> header}}
     <div class="page-container">
-        <div class="card padding">
-            <h2 class="greeting">Welcome, <span class="user-identifier">{{session.identity.traits.email}}</span>!</h2>
-            <p>Allowing geolocation can improve performance but isn't necessary</p>
-            <h2 class="underline">Step 0</h2>
-            <p>please copy your .pac file URL to your clipboard:</p>
-            <button id="copy-button" class="gradient-button gradient-button-1" value="https://{{url}}/pac/{{session.identity.id}}.pac">Copy .pac file to Clipboard</button>
+        <div id="welcome" class="card padding margin">
+            <h1 class="greeting">Welcome, <span class="user-identifier">{{session.identity.traits.email}}</span>!</h1>
+            <h4>Allowing geolocation can improve performance but isn't necessary</h4>
+            <h4>Step 0: please copy your .pac file URL to your clipboard</h4>
+            <div id="copy-container">
+                <div id="copy" onclick="copy()">https://{{url}}/pac/{{session.identity.id}}.pac</div>
+                <div id="copied">Copied!</div>
+            </div>
         </div>
         <div class="flex">
-            <div class="card padding">
+            <div class="card padding margin">
                 <h2>
                     Mac:
                 </h2>
                 <ol>
                     <li>
                         Go to System Preferences
-                        <div>
-                            <img class="instruction-image mac-image" src="images/Mac-step-1.jpg" alt="">
-                        </div>
+
                     </li>
+                </ol>
+                <div><img class="instruction-image mac-image" src="images/Mac-step-1.jpg" alt=""></div>
+                <ol start="2">
                     <li>
                         Go to Network Settings
-                        <div>
-                            <img class="instruction-image mac-image" src="images/Mac-step-2.jpg" alt="">
-                        </div>
                     </li>
+                </ol>
+                <div><img class="instruction-image mac-image" src="images/Mac-step-2.jpg" alt=""></div>
+                <ol start="3">
                     <li>
                         Click on advanced
-                        <div>
-                            <img class="instruction-image mac-image" src="images/Mac-step-3.jpg" alt="">
-                        </div>
                     </li>
+                </ol>
+                <div><img class="instruction-image mac-image" src="images/Mac-step-3.jpg" alt=""></div>
+                <ol start="4">
                     <li>
                         Go to the Proxies tab
                     </li>
@@ -44,13 +46,11 @@
                     </li>
                     <li>
                         Paste your .pac file URL into the URL field
-                        <div>
-                            <img class="instruction-image mac-image" src="images/Mac-steps-456.jpg" alt="">
-                        </div>
                     </li>
                 </ol>
+                <div><img class="instruction-image mac-image" src="images/Mac-steps-456.jpg" alt=""></div>
             </div>
-            <div class="card padding">
+            <div class="card padding margin">
                 <h2>
                     Windows:
                 </h2>
@@ -60,10 +60,10 @@
                     </li>
                     <li>
                         Click Network & Internet
-                        <div>
-                            <img class="instruction-image windows-image" src="images/Windows-10-steps-12.jpg" alt="">
-                        </div>
                     </li>
+                </ol>
+                <div><img class="instruction-image windows-image" src="images/Windows-10-steps-12.jpg" alt=""></div>
+                <ol start="3">
                     <li>
                         Click Proxy
                     </li>
@@ -72,17 +72,17 @@
                     </li>
                     <li>
                         Paste your .pac file URL into the script address field
-                        <div>
-                            <img class="instruction-image windows-image" src="images/Windows-10-steps-3456.jpg" alt="">
-                        </div>
                     </li>
                     <li>
                         Don't forget to Save
                     </li>
                 </ol>
+                <div><img class="instruction-image windows-image" src="images/Windows-10-steps-3456.jpg" alt=""></div>
             </div>
         </div>
     </div>
-    <script src="code/geolocation-helpers.js"></script>
-    <script src="code/copy-pac-url-to-clipboard.js"></script>
+    <footer>
+        <script src="code/geolocation-helpers.js"></script>
+        <script src="code/copy-pac-url-to-clipboard.js"></script>
+    </footer>
 </div>

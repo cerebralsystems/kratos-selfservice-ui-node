@@ -1,29 +1,66 @@
 .page-container {
-  padding: 12px 20px;
+	padding: 12px 20px;
 }
 
 .content .header {
-  background-color: rgb(46, 46, 46);
+	background-color: rgb(46, 46, 46);
 }
 
 .instruction-image {
-  max-width: 100%;
+	max-width: 100%;
 }
 
 .windows-image {
-  border: 1px solid black;
-}
-
-h2.underline {
-  text-decoration: underline;
-  margin: 0;
+	border: 1px solid black;
 }
 
 div.flex {
-  display: flex;
-  flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 
 div.flex > div {
-  flex: 1 1 0;
+	flex: 1 1 0;
+}
+
+#welcome {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#copy-container {
+	position: relative;
+}
+
+#copy {
+	width: 100%;
+	cursor: pointer;
+	background-color: #ffffff;
+	border: none;
+	color: #6c6c6c;
+	font-size: 14px;
+	border-radius: 5px;
+	padding: 15px 15px 15px 15px;
+	font-family: 'Montserrat', sans-serif;
+	box-shadow: 2px 3px 10px black;
+	-moz-box-shadow: 2px 3px 10px black;
+	-webkit-box-shadow: 2px 3px 10px black;
+}
+
+#copy:focus {
+	outline: none;
+}
+
+#copied {
+	display: none;
+	position: absolute;
+	transform: translateX(-50%);
+	left: 50%;
+	bottom: -90%;
+	background: white;
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 8px;
+	font-size: 20px;
 }
