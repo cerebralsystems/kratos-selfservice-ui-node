@@ -2,24 +2,18 @@ import cookieParser from 'cookie-parser';
 import express, { Request, NextFunction, Response } from 'express';
 import handlebars from 'express-handlebars';
 import loginHandler from './routes/login';
-import registrationHandler from './routes/registration';
 import errorHandler from './routes/error';
 import dashboard from './routes/dashboard';
 import debug from './routes/debug';
 import config, { SECURITY_MODE_JWT } from './config';
 import { getTitle, onlyNodes, toUiNodePartial } from './helpers/ui';
-import * as stubs from './stub/payloads';
 import settingsHandler from './routes/settings';
 import verifyHandler from './routes/verification';
 import recoveryHandler from './routes/recovery';
 import morgan from 'morgan';
-import * as https from 'https';
-import * as fs from 'fs';
 import * as path from 'path';
 import protectSimple from './middleware/simple';
 import protectOathkeeper from './middleware/oathkeeper';
-import network from './routes/network';
-import { metrics, metric } from './routes/metrics';
 import geolocation from './routes/geolocation';
 
 export const protect =
