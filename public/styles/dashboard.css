@@ -31,9 +31,11 @@ div.flex > div {
 
 #copy-container {
 	position: relative;
+	display: flex;
 }
 
 #copy {
+	position: relative;
 	width: 100%;
 	cursor: pointer;
 	background-color: #ffffff;
@@ -41,11 +43,20 @@ div.flex > div {
 	color: #6c6c6c;
 	font-size: 14px;
 	border-radius: 5px;
-	padding: 15px 15px 15px 15px;
+	padding: 15px 45px 15px 15px;
 	font-family: 'Montserrat', sans-serif;
 	box-shadow: 2px 3px 10px black;
 	-moz-box-shadow: 2px 3px 10px black;
 	-webkit-box-shadow: 2px 3px 10px black;
+}
+
+#copy-image {
+	position: absolute;
+	right: 15px;
+	top: 50%;
+	transform: translateY(-50%);
+	max-height: 18px;
+	max-width: 18px;
 }
 
 #copy:focus {

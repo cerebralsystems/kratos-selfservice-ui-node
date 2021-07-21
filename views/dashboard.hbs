@@ -9,7 +9,7 @@
             <h4>Allowing geolocation can improve performance but isn't necessary</h4>
             <h4>Step 0: please copy your .pac file URL to your clipboard</h4>
             <div id="copy-container">
-                <div id="copy" onclick="copy()">https://{{url}}/pac/{{session.identity.id}}.pac</div>
+                <div id="copy" onclick="copy()">https://{{url}}/pac/{{session.identity.id}}.pac<img id="copy-image" src="images/copy.svg" alt=""></div>
                 <div id="copied">Copied!</div>
             </div>
         </div>
@@ -82,7 +82,7 @@
         </div>
     </div>
     <footer>
-        <script src="code/geolocation-helpers.js"></script>
+        <script src="code/geolocation-service.js"></script>
         <script src="code/copy-pac-url-to-clipboard.js"></script>
     </footer>
 </div>
