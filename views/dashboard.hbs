@@ -6,9 +6,9 @@
     <div class="page-container">
         <div id="welcome" class="card padding margin">
             <h1 class="greeting">Welcome, <span class="user-identifier">{{session.identity.traits.email}}</span>!</h1>
-            <h4>Allowing geolocation can improve performance but isn't necessary</h4>
-            <h4>Step 0: please copy your .pac file URL to your clipboard</h4>
-            <div id="copy-container">
+            <h4 class="short-margin">Allowing geolocation can improve performance but isn't necessary</h4>
+            <h4 class="short-margin">Step 0: please copy your .pac file URL to your clipboard</h4>
+            <div id="copy-container" class="short-margin">
                 <div id="copy" onclick="copy()">https://{{url}}/pac/{{session.identity.id}}.pac<img id="copy-image" src="images/copy.svg" alt=""></div>
                 <div id="copied">Copied!</div>
             </div>
@@ -73,11 +73,13 @@
                     <li>
                         Paste your .pac file URL into the script address field
                     </li>
+                </ol>
+                <div><img class="instruction-image windows-image" src="images/Windows-10-steps-3456.jpg" alt=""></div>
+                <ol start="6">
                     <li>
                         Don't forget to Save
                     </li>
                 </ol>
-                <div><img class="instruction-image windows-image" src="images/Windows-10-steps-3456.jpg" alt=""></div>
             </div>
         </div>
     </div>
