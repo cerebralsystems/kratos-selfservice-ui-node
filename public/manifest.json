@@ -1,0 +1,21 @@
+{
+  "name": "PWA-starter",
+  "short_name": "PWA-starter",
+  "start_url": "src/cindex.ts",
+  "display": "standalone",
+  "background_color": "#2A3443",
+  "description": "A demo app for a fictional conference",
+  "theme_color": "#2A3443",
+  "icons": [
+    {
+      "src": "images/favicon.ico",
+      "sizes": "256x256",
+      "type": "image/ico"
+    },
+    {
+      "src": "images/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

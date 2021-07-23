@@ -1,21 +1,21 @@
 <div class="header">
-    <a href="{{pathPrefix}}">
+    <a href="{{pathPrefix}}" aria-label="Neuron Home">
         {{> icon_logo}}
     </a>
     
     {{#if (eq session.identity.schema_id "admin")}}
-    <a href="{{pathPrefix}}network">
+    <a href="{{pathPrefix}}network" aria-label="Network Tab">
         Network
     </a>
     {{/if}}
     <div class="icon-actions">
         <div class="settings">
-            <a href="{{pathPrefix}}settings">
+            <a href="{{pathPrefix}}settings" aria-label="Settings">
                 {{> icon_gear}}
             </a>
         </div>
         <div class="logout">
-            <a href="{{logoutUrl}}">
+            <a href="{{logoutUrl}}" aria-label="Logout">
                 {{> icon_sign_out}}
             </a>
         </div>
