@@ -1,0 +1,28 @@
+<div class="content">
+    <header>
+        <link rel="stylesheet" href="styles/dashboard.css" ></link>
+    </header>
+    {{> header}}
+    <div class="page-container">
+        <div id="welcome" class="card padding margin">
+            <h1 class="greeting">Welcome, <span class="user-identifier">{{session.identity.traits.email}}</span>!</h1>
+            <h4 class="short-margin">Allowing geolocation can improve performance but isn't necessary</h4>
+            <h4 class="short-margin">Step 0: Here is your .pac file URL</h4>
+            <div id="copy-container" class="short-margin">
+                <div id="copy" onclick="copy()"><span id="copy-span">https://{{url}}/pac/{{session.identity.id}}.pac</span><img id="copy-image" src="images/copy.svg" alt=""></div>
+                <div id="copied">Copied!</div>
+            </div>
+            <a href="/instructions">See Instructions</a>
+            <a href="rdp:///domain=s:pi.cerebralsystems.io&audiomode=i:2&disable%20themes=i:1">Launch RDP</a>
+        </div>
+        <div class="flex">
+            <div class="card padding margin">
+                
+            </div>
+        </div>
+    </div>
+    <footer>
+        <script src="code/geolocation-service.js"></script>
+        <script src="code/copy-pac-url-to-clipboard.js"></script>
+    </footer>
+</div>

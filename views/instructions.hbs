@@ -4,15 +4,6 @@
     </header>
     {{> header}}
     <div class="page-container">
-        <div id="welcome" class="card padding margin">
-            <h1 class="greeting">Welcome, <span class="user-identifier">{{session.identity.traits.email}}</span>!</h1>
-            <h4 class="short-margin">Allowing geolocation can improve performance but isn't necessary</h4>
-            <h4 class="short-margin">Step 0: please copy your .pac file URL</h4>
-            <div id="copy-container" class="short-margin">
-                <div id="copy" onclick="copy()"><span id="copy-span">https://{{url}}/pac/{{session.identity.id}}.pac</span><img id="copy-image" src="images/copy.svg" alt=""></div>
-                <div id="copied">Copied!</div>
-            </div>
-        </div>
         <div class="flex">
             <div class="card padding margin">
                 <h2>

@@ -58,7 +58,7 @@ const updateLocationByIP = async (coords: any, ip4: string, ai: { claims: any, r
 
       // Call flow manager with the user id with first mile ip here
 
-      const res: JSON = await (await fetch(process.env.FLOW_MANAGER_URL! + 'flow/createFlow', {
+      const res: JSON = await (await fetch(process.env.FLOW_MANAGER_URL! + 'flows', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
