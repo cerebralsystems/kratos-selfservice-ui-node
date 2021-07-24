@@ -1,10 +1,10 @@
 {
-  "name": "PWA-starter",
-  "short_name": "PWA-starter",
+  "name": "Neuron",
+  "short_name": "Neuron",
   "start_url": "src/index.ts",
   "display": "standalone",
   "background_color": "#2A3443",
-  "description": "A demo app for a fictional conference",
+  "description": "A better connected experience.",
   "theme_color": "#2A3443",
   "icons": [
     {
