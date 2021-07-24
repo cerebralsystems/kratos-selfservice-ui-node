@@ -13,38 +13,33 @@
             </div>
             <a href="/instructions">See Instructions</a>
             <a href="rdp:///domain=s:pi.cerebralsystems.io&audiomode=i:2&disable%20themes=i:1">Launch RDP</a>
+            <button id="download-button" onclick="PWA()">Download this page as PWA<br>(this button should not be rendered in PWA)</button>
         </div>
         <div class="card padding margin text-center">
-            <button id="download-button" onclick="PWA()">Download this page as PWA<br>(this button should not be rendered in PWA)</button>
-            <div class="padding flex justify-space-between">
-                <div class="app-container card padding flex-col justify align-items">
-                    <div class="img-container padding flex justify align-items">
-                        <img src="icons/desktop.png" alt="">
-                    </div>
+            <div class="padding flex-wrap justify-space-between">
+                <div id="app-container" class="card padding flex-col justify-space-between align-items">
+                    <span></span>
+                    <img src="icons/desktop.png" alt="">
                     <p class="no-margin">desktop</p>
                 </div>
-                <div class="app-container card padding flex-col justify align-items">
-                    <div class="img-container padding flex justify align-items">
-                        <img src="icons/dropbox-brands.png" alt="">
-                    </div>
+                <div id="app-container" class="card padding flex-col justify-space-between align-items">
+                    <span></span>
+                    <img src="icons/dropbox-brands.png" alt="">
                     <p class="no-margin">dropbox</p>
                 </div>
-                <div class="app-container card padding flex-col justify align-items">
-                    <div class="img-container padding flex justify align-items">
-                        <img src="icons/microsoft.png" alt="">
-                    </div>
+                <div id="app-container" class="card padding flex-col justify-space-between align-items">
+                    <span></span>
+                    <img src="icons/microsoft.png" alt="">
                     <p class="no-margin">microsoft</p>
                 </div>
-                <div class="app-container card padding flex-col justify align-items">
-                    <div class="img-container padding flex justify align-items">
-                        <img src="icons/salesforce.png" alt="">
-                    </div>
+                <div id="app-container" class="card padding flex-col justify-space-between align-items">
+                    <span></span>
+                    <img src="icons/salesforce.png" alt="">
                     <p class="no-margin">salesforce</p>
                 </div>
-                <div class="app-container card padding flex-col justify align-items">
-                    <div class="img-container padding flex justify align-items">
-                        <img src="icons/slack.png" alt="">
-                    </div>
+                <div id="app-container" class="card padding flex-col justify-space-between align-items">
+                    <span></span>
+                    <img src="icons/slack.png" alt="">
                     <p class="no-margin">slack</p>
                 </div>
             </div>
