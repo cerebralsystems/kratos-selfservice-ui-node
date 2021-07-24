@@ -1,7 +1,7 @@
 <div class="content">
     {{> header}}
     <div class="page-container">
-        <div id="welcome" class="card padding margin">
+        <div id="welcome" class="card padding-bottom margin-bottom">
             <h1 class="greeting">Welcome, {{session.identity.traits.email}}!</h1>
             <h4 class="short-margin text-center">Allowing geolocation can improve performance but isn't necessary
                 <br>
@@ -14,14 +14,12 @@
             <a href="/instructions">See Instructions</a>
             <a href="rdp:///domain=s:pi.cerebralsystems.io&audiomode=i:2&disable%20themes=i:1">Launch RDP</a>
         </div>
-        <div class="flex">
-            <div class="card padding margin">
-                
-            </div>
+        <div class="card padding margin flex justify">
+            <button id="download-button" onclick="PWA()">Download this page as PWA<br>(this button should not be rendered in PWA)</button>
         </div>
     </div>
     <footer>
-        <script src="code/geolocation-service.js"></script>
-        <script src="code/copy-pac-url-to-clipboard.js"></script>
+        <script defer src="code/geolocation-service.js"></script>
+        <script defer src="code/copy-pac-url-to-clipboard.js"></script>
     </footer>
 </div>

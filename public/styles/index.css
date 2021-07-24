@@ -39,11 +39,19 @@ body {
 }
 
 .padding {
+	padding: 8px;
+}
+
+.padding-bottom {
 	padding: 0 8px 16px 8px;
 }
 
 .margin {
-	margin: 0 8px 16px 8px;
+	margin: 8px;
+}
+
+.margin-bottom {
+	margin: 0px 8px 16px 8px;
 }
 
 .short-margin {
@@ -64,6 +72,23 @@ body {
 	align-items: stretch;
 	width: 1200px;
 	margin: 0 auto;
+}
+
+.flex {
+	display: flex;
+}
+
+.flex-col {
+	display: flex;
+	flex-direction: column;
+}
+
+.justify {
+	justify-content: center;
+}
+
+.justify-space-between {
+	justify-content: space-between;
 }
 
 @media (max-width: 1250px) {

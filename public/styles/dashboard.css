@@ -14,15 +14,6 @@
 	border: 1px solid black;
 }
 
-div.flex {
-	display: flex;
-	flex-direction: row;
-}
-
-div.flex > div {
-	flex: 1 1 0;
-}
-
 #welcome {
 	display: flex;
 	flex-direction: column;
@@ -67,11 +58,17 @@ div.flex > div {
 	display: none;
 	position: absolute;
 	transform: translateX(-50%);
-	left: 50%;
-	bottom: -90%;
+	top: 10%;
+	left: 110%;
 	background: white;
 	border: 1px solid black;
 	border-radius: 5px;
 	padding: 8px;
 	font-size: 20px;
+}
+
+#download-button {
+	background-color: blue;
+	color: white;
+	min-height: 20px;
 }

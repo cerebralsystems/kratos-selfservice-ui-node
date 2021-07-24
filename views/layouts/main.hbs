@@ -4,13 +4,14 @@
     {{#if baseUrl}}
     <base href="{{baseUrl}}"/>
     {{/if}}
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#5a5b6c">
     <meta name="description" content="Neuron - A faster VPN connection">
     <title>{{projectName}}</title>
     <link rel="shortcut icon" href="images/favicon.ico">
     <link rel="manifest" href="manifest.json">
+    <script src="code/pwa-download-button.js"></script>
     <script>
         async function registerSW () {
             if ('serviceWorker' in navigator) {
