@@ -78,11 +78,7 @@
 	max-width: 18%;
 }
 
-#app-container > img {
-	max-height: 100%;
-	max-width: 100%;
-}
-
-#app-container > p {
-	justify-self: last baseline;
+.svg-icon {
+	height: 100%;
+	width: 100%;
 }
