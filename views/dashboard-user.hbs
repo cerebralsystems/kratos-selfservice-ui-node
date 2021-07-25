@@ -12,66 +12,75 @@
                 Step 0: Here is your .pac file URL
             </h4>
             <div id="copy-container" class="thin-margin">
-                <div id="copy" onclick="copy()"><span id="copy-span">https://{{url}}/pac/{{session.identity.id}}.pac</span><img id="copy-image" src="images/copy.svg" alt=""></div>
-                <div id="copied">Copied!</div>
+                <div id="copy" onclick="copy('pac-span', 'pac-copied')"><span id="pac-span">https://{{url}}/pac/{{session.identity.id}}.pac</span><img id="copy-image" src="images/copy.svg" alt=""></div>
+                <div id="pac-copied" class="copied">Copied!</div>
             </div>
             <a href="/instructions">See Instructions</a>
             <a href="rdp:///domain=s:pi.cerebralsystems.io&audiomode=i:2&disable%20themes=i:1">Launch RDP</a>
             <!--button id="download-button" onclick="PWA()">Download this page as PWA<br>(this button should not be rendered in PWA)</button-->
         </div>
         <div class="card padding margin text-center">
-            <div id="copy-container" class="thin-margin">
-                <div id="copy" onclick="copy()"><span id="copy-span">vdi.pi.cerebralsystems.io</span><img id="copy-image" src="images/copy.svg" alt=""></div>
-                <div id="copied">Copied!</div>
-            </div>
-            <div class="padding flex-wrap justify-space-between">
+            <div class="padding flex-wrap justify-space-between margin-bottom">
+                <div id="app-container" onclick="copy('vdi-span', 'vdi-copied')" class="card padding flex-col justify-space-between align-items">
+                    <i class="fa fa-desktop" style="font-size: 72px; color: gray"></i>
+                    <div id="vdi-copied" class="copied">Copied!</div>
+                    <p class="no-margin"><span id="vdi-span">vdi.pi.cerebralsystems.io</span></p>
+                </div>
                 <div id="app-container" class="card padding flex-col justify-space-between align-items">
                     <a href="https://www.skype.com/en/" target="_blank">
-                        <object class="svg-icon" type="image/svg+xml" data="icons/skype.svg"></object>
+                        <i class="fab fa-skype"></i>
+                        <!--object class="svg-icon" type="image/svg+xml" data="icons/skype.svg"></object-->
                     </a>
-                    <p class="no-margin">skype</p>
+                    <p class="no-margin">Skype</p>
                 </div>
                 <div id="app-container" class="card padding flex-col justify-space-between align-items">
                     <a href="https://www.github.com" target="_blank">
-                        <object class="svg-icon" type="image/svg+xml" data="icons/salesforce.svg"></object>
+                    <i class="fab fa-salesforce"></i>
+                        <!--object class="svg-icon" type="image/svg+xml" data="icons/salesforce.svg"></object-->
                     </a>
-                    <p class="no-margin">salesforce</p>
+                    <p class="no-margin">Salesforce</p>
                 </div>
                 <div id="app-container" class="card padding flex-col justify-space-between align-items">
                     <a href="https://www.github.com" target="_blank">
-                        <object class="svg-icon" type="image/svg+xml" data="icons/github.svg"></object>
+                        <i class="fab fa-github"></i>
+                        <!--object class="svg-icon" type="image/svg+xml" data="icons/github.svg"></object-->
                     </a>
-                    <p class="no-margin">github</p>
+                    <p class="no-margin">Github</p>
                 </div>
                 <div id="app-container" class="card padding flex-col justify-space-between align-items">
                     <a href="https://www.gitlab.com" target="_blank">
-                        <object class="svg-icon" type="image/svg+xml" data="icons/gitlab.svg"></object>
+                        <i class="fab fa-gitlab"></i>
+                        <!--object class="svg-icon" type="image/svg+xml" data="icons/gitlab.svg"></object-->
                     </a>
-                    <p class="no-margin">gitlab</p>
+                    <p class="no-margin">Gitlab</p>
                 </div>
                 <div id="app-container" class="card padding flex-col justify-space-between align-items">
                     <a href="https://hub.docker.com/" target="_blank">
-                        <object class="svg-icon" type="image/svg+xml" data="icons/docker.svg"></object>
+                        <i class="fab fa-docker"></i>
+                        <!--object class="svg-icon" type="image/svg+xml" data="icons/docker.svg"></object-->
                     </a>
-                    <p class="no-margin">docker</p>
+                    <p class="no-margin">Docker</p>
                 </div>
                 <div id="app-container" class="card padding flex-col justify-space-between align-items">
                     <a href="https://www.dropbox.com/" target="_blank">
-                        <object class="svg-icon" type="image/svg+xml" data="icons/dropbox.svg"></object>
+                        <i class="fab fa-dropbox"></i>
+                        <!--object class="svg-icon" type="image/svg+xml" data="icons/dropbox.svg"></object-->
                     </a>
-                    <p class="no-margin">dropbox</p>
+                    <p class="no-margin">Dropbox</p>
                 </div>
                 <div id="app-container" class="card padding flex-col justify-space-between align-items">
                     <a href="https://www.jenkins.io/" target="_blank">
-                        <object class="svg-icon" type="image/svg+xml" data="icons/jenkins.svg"></object>
+                        <i class="fab fa-jenkins"></i>
+                        <!--object class="svg-icon" type="image/svg+xml" data="icons/jenkins.svg"></object-->
                     </a>
-                    <p class="no-margin">jenkins</p>
+                    <p class="no-margin">Jenkins</p>
                 </div>
                 <div id="app-container" class="card padding flex-col justify-space-between align-items">
                     <a href="https://www.npmjs.com/" target="_blank">
-                    <object class="svg-icon" type="image/svg+xml" data="icons/npm.svg"></object>
+                    <i class="fab fa-npm"></i>
+                    <!--object class="svg-icon" type="image/svg+xml" data="icons/npm.svg"></object-->
                     </a>
-                    <p class="no-margin">npm</p>
+                    <p class="no-margin">NPM</p>
                 </div>
             </div>
         </div>
