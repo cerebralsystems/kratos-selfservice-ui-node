@@ -74,11 +74,19 @@
 }
 
 #app-container {
-	margin: 24px;
-	max-width: 18%;
+	margin: 4px;
+	max-width: 120px;
+	height: 120px;
+	padding-bottom: 16px;
+}
+
+#app-container :hover {
+	background-color: var(--base-highlight);
 }
 
 .svg-icon {
 	height: 100%;
 	width: 100%;
+	pointer-events: none;
 }
+
