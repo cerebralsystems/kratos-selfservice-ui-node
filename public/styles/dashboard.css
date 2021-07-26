@@ -85,10 +85,11 @@
 
 #app-container a i {
 	font-size: 72px;
+	color: var(--primary-main);
 }
 
 #app-container :hover {
-	background-color: var(--base-highlight);
+	background-color: var(--base-main);
 }
 
 

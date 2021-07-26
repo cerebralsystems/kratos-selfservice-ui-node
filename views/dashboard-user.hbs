@@ -6,26 +6,37 @@
     {{> header}}
     <div class="page-container">
         <div id="welcome" class="card padding-bottom padding-sides margin-bottom margin-sides">
-            <h1 class="greeting">Welcome, {{session.identity.traits.email}}!</h1>
-            <h4 class="thin-margin text-center">Allowing geolocation can improve performance but isn't necessary
+            <img id="logo" src="{{tenant.logo}}"" class="margin"></img>
+            <h4 class="greeting">Welcome, {{session.identity.traits.email}}!</h4>
+            <h5 class="no-margin text-center">Allowing geolocation can improve performance but isn't necessary
                 <br>
                 Step 0: Here is your .pac file URL
-            </h4>
+            </h5>
             <div id="copy-container" class="thin-margin">
                 <div id="copy" onclick="copy('pac-span', 'pac-copied')"><span id="pac-span">https://{{url}}/pac/{{session.identity.id}}.pac</span><img id="copy-image" src="images/copy.svg" alt=""></div>
                 <div id="pac-copied" class="copied">Copied!</div>
             </div>
             <a href="/instructions">See Instructions</a>
-            <a href="rdp:///domain=s:pi.cerebralsystems.io&audiomode=i:2&disable%20themes=i:1">Launch RDP</a>
+            <!--a href="rdp:///domain=s:pi.cerebralsystems.io&audiomode=i:2&disable%20themes=i:1">Launch RDP</a-->
             <!--button id="download-button" onclick="PWA()">Download this page as PWA<br>(this button should not be rendered in PWA)</button-->
         </div>
         <div class="card padding margin text-center">
             <div class="padding flex-wrap justify-space-between margin-bottom">
                 <div id="app-container" onclick="copy('vdi-span', 'vdi-copied')" class="card padding flex-col justify-space-between align-items">
-                    <i class="fa fa-desktop" style="font-size: 72px; color: gray"></i>
+                    <i class="fa fa-desktop" style="font-size: 72px; color: var(--primary-main)"></i>
                     <div id="vdi-copied" class="copied">Copied!</div>
                     <p class="no-margin"><span id="vdi-span">vdi.pi.cerebralsystems.io</span></p>
                 </div>
+                {{#each services}}
+                    <div id="app-container" class="card padding flex-col justify-space-between align-items">
+                    <a href="{{this.url}}" target="_blank">
+                        <i class="fab fa-{{this.name}}"></i>
+                        <!--object class="svg-icon" type="image/svg+xml" data="icons/skype.svg"></object-->
+                    </a>
+                    <p class="no-margin">{{this.name}}</p>
+                </div>
+                {{/each}}
+{{#if none}}                
                 <div id="app-container" class="card padding flex-col justify-space-between align-items">
                     <a href="https://www.skype.com/en/" target="_blank">
                         <i class="fab fa-skype"></i>
@@ -34,7 +45,7 @@
                     <p class="no-margin">Skype</p>
                 </div>
                 <div id="app-container" class="card padding flex-col justify-space-between align-items">
-                    <a href="https://www.github.com" target="_blank">
+                    <a href="https://www.salesforce.com" target="_blank">
                     <i class="fab fa-salesforce"></i>
                         <!--object class="svg-icon" type="image/svg+xml" data="icons/salesforce.svg"></object-->
                     </a>
@@ -82,6 +93,7 @@
                     </a>
                     <p class="no-margin">NPM</p>
                 </div>
+{{/if}}                
             </div>
         </div>
     </div>
