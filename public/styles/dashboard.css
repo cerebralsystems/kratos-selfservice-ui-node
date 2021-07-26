@@ -58,7 +58,7 @@
 	display: none;
 	position: absolute;
 	transform: translateX(-50%);
-	top: 100%;
+	top: 110%;
 	left: 50%;
 	background: white;
 	border: 1px solid black;
@@ -75,20 +75,20 @@
 
 #app-container {
 	margin: 4px;
-	max-width: 120px;
+	max-width: calc(20% - 24px);
 	padding-bottom: 16px;
 }
 
-#app-container p {
+#app-container > p {
 	font-size: 11px;
 }
 
-#app-container a i {
+#app-container > a > i {
 	font-size: 72px;
 	color: var(--primary-main);
 }
 
-#app-container :hover {
+#app-container:hover {
 	background-color: var(--base-main);
 }
 

@@ -56,7 +56,7 @@ body {
 }
 
 .margin-bottom {
-	margin-bottom: 16px;
+	margin: 16px;
 }
 
 .margin-sides {
@@ -65,7 +65,7 @@ body {
 }
 
 .thin-margin {
-	margin: 5px 0;
+	margin: 4px 0;
 }
 
 .no-margin {
@@ -236,14 +236,6 @@ body {
 	font-weight: 600;
 	line-height: 160%;
 	margin-top: 4rem;
-}
-
-h4:first-child {
-	margin: 0;
-}
-
-h4 ~ h5 {
-	margin: -0.25rem 0 1rem 0;
 }
 
 .container pre {
