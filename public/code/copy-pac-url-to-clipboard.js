@@ -1,5 +1,7 @@
 function copy (spanId, copiedId) {
-  var copyElement = document.getElementById(spanId);
+  const copyElement = document.getElementById(spanId);
+  const confirmation = document.getElementById(copiedId);
+  console.log(confirmation);
 
   if (window.getSelection) {
     const selection = window.getSelection();
@@ -16,8 +18,6 @@ function copy (spanId, copiedId) {
   }
 
   document.execCommand('copy');
-
-  const confirmation = document.getElementById(copiedId);
 
   confirmation.style.display = 'block';
   setTimeout(function () {

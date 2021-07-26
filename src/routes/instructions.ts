@@ -3,5 +3,11 @@ import { authInfo, UserRequest } from '../helpers/authInfo';
 
 export default (req: Request, res: Response) => {
   const ai = authInfo(req as UserRequest);
-  res.render('instructions', {});
+
+  const context : any = {
+    session: ai.claims.session,
+    url: req.hostname
+  };
+
+  res.render('instructions', context);
 };

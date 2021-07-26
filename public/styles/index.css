@@ -94,6 +94,14 @@ body {
 	flex: 1 1 100%;
 }
 
+.flex-evenly {
+	display: flex;
+}
+
+.flex-evenly > * {
+	flex: 1 1 100%;
+}
+
 .justify {
 	justify-content: center;
 }
