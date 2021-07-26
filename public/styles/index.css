@@ -90,6 +90,10 @@ body {
 	flex-wrap: wrap;
 }
 
+.flex-wrap > * {
+	flex: 1 1 100%;
+}
+
 .justify {
 	justify-content: center;
 }

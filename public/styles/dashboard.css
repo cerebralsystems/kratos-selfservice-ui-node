@@ -92,10 +92,8 @@
 	background-color: var(--base-main);
 }
 
-
-.svg-icon {
+.icon {
 	height: 100%;
 	width: 100%;
 	pointer-events: none;
 }
-
