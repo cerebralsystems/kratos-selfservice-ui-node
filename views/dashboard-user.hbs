@@ -1,12 +1,8 @@
-<script src="code/pwa-download-button.js"></script>
-<script defer src="code/geolocation-service.js"></script>
-<script defer src="code/copy-pac-url-to-clipboard.js"></script>
-
 <div class="content">
     {{> header}}
     <div class="page-container">
         <div id="welcome" class="card padding-bottom padding-sides margin-bottom margin-sides">
-            <img id="logo" src="{{tenant.logo}}"" class="margin"></img>
+            <img id="logo" src="{{tenant.logo}}" class="margin"></img>
             <h4 class="greeting">Welcome, {{session.identity.traits.email}}!</h4>
             <h5 class="no-margin text-center">Allowing geolocation can improve performance but isn't necessary
                 <br>
@@ -27,73 +23,75 @@
                     <div id="vdi-copied" class="copied">Copied!</div>
                     <p class="no-margin"><span id="vdi-span">vdi.pi.cerebralsystems.io</span></p>
                 </div>
+
                 {{#each services}}
                     <div id="app-container" class="card padding flex-col justify-space-between align-items">
-                    <a href="{{this.url}}" target="_blank">
-                        <i class="fab fa-{{this.name}}"></i>
-                        <!--object class="svg-icon" type="image/svg+xml" data="icons/skype.svg"></object-->
-                    </a>
-                    <p class="no-margin">{{this.name}}</p>
-                </div>
+                        <a href="{{this.url}}" target="_blank">
+                            <i class="fab fa-{{this.name}}"></i>
+                            <!--object class="svg-icon" type="image/svg+xml" data="icons/skype.svg"></object-->
+                        </a>
+                        <p class="no-margin">{{this.name}}</p>
+                    </div>
                 {{/each}}
-{{#if none}}                
-                <div id="app-container" class="card padding flex-col justify-space-between align-items">
-                    <a href="https://www.skype.com/en/" target="_blank">
-                        <i class="fab fa-skype"></i>
-                        <!--object class="svg-icon" type="image/svg+xml" data="icons/skype.svg"></object-->
-                    </a>
-                    <p class="no-margin">Skype</p>
-                </div>
-                <div id="app-container" class="card padding flex-col justify-space-between align-items">
-                    <a href="https://www.salesforce.com" target="_blank">
-                    <i class="fab fa-salesforce"></i>
-                        <!--object class="svg-icon" type="image/svg+xml" data="icons/salesforce.svg"></object-->
-                    </a>
-                    <p class="no-margin">Salesforce</p>
-                </div>
-                <div id="app-container" class="card padding flex-col justify-space-between align-items">
-                    <a href="https://www.github.com" target="_blank">
-                        <i class="fab fa-github"></i>
-                        <!--object class="svg-icon" type="image/svg+xml" data="icons/github.svg"></object-->
-                    </a>
-                    <p class="no-margin">Github</p>
-                </div>
-                <div id="app-container" class="card padding flex-col justify-space-between align-items">
-                    <a href="https://www.gitlab.com" target="_blank">
-                        <i class="fab fa-gitlab"></i>
-                        <!--object class="svg-icon" type="image/svg+xml" data="icons/gitlab.svg"></object-->
-                    </a>
-                    <p class="no-margin">Gitlab</p>
-                </div>
-                <div id="app-container" class="card padding flex-col justify-space-between align-items">
-                    <a href="https://hub.docker.com/" target="_blank">
-                        <i class="fab fa-docker"></i>
-                        <!--object class="svg-icon" type="image/svg+xml" data="icons/docker.svg"></object-->
-                    </a>
-                    <p class="no-margin">Docker</p>
-                </div>
-                <div id="app-container" class="card padding flex-col justify-space-between align-items">
-                    <a href="https://www.dropbox.com/" target="_blank">
-                        <i class="fab fa-dropbox"></i>
-                        <!--object class="svg-icon" type="image/svg+xml" data="icons/dropbox.svg"></object-->
-                    </a>
-                    <p class="no-margin">Dropbox</p>
-                </div>
-                <div id="app-container" class="card padding flex-col justify-space-between align-items">
-                    <a href="https://www.jenkins.io/" target="_blank">
-                        <i class="fab fa-jenkins"></i>
-                        <!--object class="svg-icon" type="image/svg+xml" data="icons/jenkins.svg"></object-->
-                    </a>
-                    <p class="no-margin">Jenkins</p>
-                </div>
-                <div id="app-container" class="card padding flex-col justify-space-between align-items">
-                    <a href="https://www.npmjs.com/" target="_blank">
-                    <i class="fab fa-npm"></i>
-                    <!--object class="svg-icon" type="image/svg+xml" data="icons/npm.svg"></object-->
-                    </a>
-                    <p class="no-margin">NPM</p>
-                </div>
-{{/if}}                
+
+                {{#if none}}                
+                    <div id="app-container" class="card padding flex-col justify-space-between align-items">
+                        <a href="https://www.skype.com/en/" target="_blank">
+                            <i class="fab fa-skype"></i>
+                            <!--object class="svg-icon" type="image/svg+xml" data="icons/skype.svg"></object-->
+                        </a>
+                        <p class="no-margin">Skype</p>
+                    </div>
+                    <div id="app-container" class="card padding flex-col justify-space-between align-items">
+                        <a href="https://www.salesforce.com" target="_blank">
+                        <i class="fab fa-salesforce"></i>
+                            <!--object class="svg-icon" type="image/svg+xml" data="icons/salesforce.svg"></object-->
+                        </a>
+                        <p class="no-margin">Salesforce</p>
+                    </div>
+                    <div id="app-container" class="card padding flex-col justify-space-between align-items">
+                        <a href="https://www.github.com" target="_blank">
+                            <i class="fab fa-github"></i>
+                            <!--object class="svg-icon" type="image/svg+xml" data="icons/github.svg"></object-->
+                        </a>
+                        <p class="no-margin">Github</p>
+                    </div>
+                    <div id="app-container" class="card padding flex-col justify-space-between align-items">
+                        <a href="https://www.gitlab.com" target="_blank">
+                            <i class="fab fa-gitlab"></i>
+                            <!--object class="svg-icon" type="image/svg+xml" data="icons/gitlab.svg"></object-->
+                        </a>
+                        <p class="no-margin">Gitlab</p>
+                    </div>
+                    <div id="app-container" class="card padding flex-col justify-space-between align-items">
+                        <a href="https://hub.docker.com/" target="_blank">
+                            <i class="fab fa-docker"></i>
+                            <!--object class="svg-icon" type="image/svg+xml" data="icons/docker.svg"></object-->
+                        </a>
+                        <p class="no-margin">Docker</p>
+                    </div>
+                    <div id="app-container" class="card padding flex-col justify-space-between align-items">
+                        <a href="https://www.dropbox.com/" target="_blank">
+                            <i class="fab fa-dropbox"></i>
+                            <!--object class="svg-icon" type="image/svg+xml" data="icons/dropbox.svg"></object-->
+                        </a>
+                        <p class="no-margin">Dropbox</p>
+                    </div>
+                    <div id="app-container" class="card padding flex-col justify-space-between align-items">
+                        <a href="https://www.jenkins.io/" target="_blank">
+                            <i class="fab fa-jenkins"></i>
+                            <!--object class="svg-icon" type="image/svg+xml" data="icons/jenkins.svg"></object-->
+                        </a>
+                        <p class="no-margin">Jenkins</p>
+                    </div>
+                    <div id="app-container" class="card padding flex-col justify-space-between align-items">
+                        <a href="https://www.npmjs.com/" target="_blank">
+                        <i class="fab fa-npm"></i>
+                        <!--object class="svg-icon" type="image/svg+xml" data="icons/npm.svg"></object-->
+                        </a>
+                        <p class="no-margin">NPM</p>
+                    </div>
+                {{/if}}                
             </div>
         </div>
     </div>
