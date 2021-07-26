@@ -10,7 +10,7 @@
             <!--button id="download-button" onclick="PWA()">Download this page as PWA<br>(this button should not be rendered in PWA)</button-->
         </div>
         <div class="card padding margin text-center">
-            <div class="padding margin flex-wrap">
+            <div class="padding margin flex-wrap justify">
                 <div id="app-container" onclick="copy('vdi-span', 'vdi-copied')" class="card padding flex-col justify-space-between align-items">
                     <i class="icon fa fa-desktop" style="font-size: 72px; color: var(--primary-main)"></i>
                     <p class="no-margin"><span id="vdi-span">vdi.pi.cerebralsystems.io</span></p>
@@ -24,66 +24,7 @@
                         </a>
                         <p class="no-margin">{{this.name}}</p>
                     </div>
-                {{/each}}
-
-                {{#if none}}                
-                    <div id="app-container" class="card padding flex-col justify-space-between align-items">
-                        <a href="https://www.skype.com/en/" target="_blank">
-                            <i class="fab fa-skype"></i>
-                            <!--object class="svg-icon" type="image/svg+xml" data="icons/skype.svg"></object-->
-                        </a>
-                        <p class="no-margin">Skype</p>
-                    </div>
-                    <div id="app-container" class="card padding flex-col justify-space-between align-items">
-                        <a href="https://www.salesforce.com" target="_blank">
-                        <i class="fab fa-salesforce"></i>
-                            <!--object class="svg-icon" type="image/svg+xml" data="icons/salesforce.svg"></object-->
-                        </a>
-                        <p class="no-margin">Salesforce</p>
-                    </div>
-                    <div id="app-container" class="card padding flex-col justify-space-between align-items">
-                        <a href="https://www.github.com" target="_blank">
-                            <i class="fab fa-github"></i>
-                            <!--object class="svg-icon" type="image/svg+xml" data="icons/github.svg"></object-->
-                        </a>
-                        <p class="no-margin">Github</p>
-                    </div>
-                    <div id="app-container" class="card padding flex-col justify-space-between align-items">
-                        <a href="https://www.gitlab.com" target="_blank">
-                            <i class="fab fa-gitlab"></i>
-                            <!--object class="svg-icon" type="image/svg+xml" data="icons/gitlab.svg"></object-->
-                        </a>
-                        <p class="no-margin">Gitlab</p>
-                    </div>
-                    <div id="app-container" class="card padding flex-col justify-space-between align-items">
-                        <a href="https://hub.docker.com/" target="_blank">
-                            <i class="fab fa-docker"></i>
-                            <!--object class="svg-icon" type="image/svg+xml" data="icons/docker.svg"></object-->
-                        </a>
-                        <p class="no-margin">Docker</p>
-                    </div>
-                    <div id="app-container" class="card padding flex-col justify-space-between align-items">
-                        <a href="https://www.dropbox.com/" target="_blank">
-                            <i class="fab fa-dropbox"></i>
-                            <!--object class="svg-icon" type="image/svg+xml" data="icons/dropbox.svg"></object-->
-                        </a>
-                        <p class="no-margin">Dropbox</p>
-                    </div>
-                    <div id="app-container" class="card padding flex-col justify-space-between align-items">
-                        <a href="https://www.jenkins.io/" target="_blank">
-                            <i class="fab fa-jenkins"></i>
-                            <!--object class="svg-icon" type="image/svg+xml" data="icons/jenkins.svg"></object-->
-                        </a>
-                        <p class="no-margin">Jenkins</p>
-                    </div>
-                    <div id="app-container" class="card padding flex-col justify-space-between align-items">
-                        <a href="https://www.npmjs.com/" target="_blank">
-                        <i class="fab fa-npm"></i>
-                        <!--object class="svg-icon" type="image/svg+xml" data="icons/npm.svg"></object-->
-                        </a>
-                        <p class="no-margin">NPM</p>
-                    </div>
-                {{/if}}                
+                {{/each}}              
             </div>
         </div>
     </div>

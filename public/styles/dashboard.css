@@ -75,7 +75,8 @@
 
 #app-container {
 	margin: 4px;
-	max-width: calc(20% - 24px);
+	min-width: 120px;
+	max-width: calc((100% / 7) - 24px);
 	padding-bottom: 16px;
 }
 
