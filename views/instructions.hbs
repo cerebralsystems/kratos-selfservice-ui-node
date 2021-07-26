@@ -1,9 +1,13 @@
 <div class="content">
-    <header>
-        <link rel="stylesheet" href="styles/dashboard.css" ></link>
-    </header>
     {{> header}}
     <div class="page-container">
+        <div class="card padding margin">
+            <h5>Step 0: Here is your .pac file URL</h5>
+            <div id="copy-container" class="thin-margin">
+                <div id="copy" onclick="copy('pac-span', 'pac-copied')"><span id="pac-span">https://{{url}}/pac/{{session.identity.id}}.pac</span><img id="copy-image" src="images/copy.svg" alt=""></div>
+                <div id="pac-copied" class="copied">Copied!</div>
+            </div>
+        </div>
         <div class="flex">
             <div class="card padding margin">
                 <h2>
@@ -12,7 +16,6 @@
                 <ol>
                     <li>
                         Go to System Preferences
-
                     </li>
                 </ol>
                 <div><img class="instruction-image mac-image" src="images/Mac-step-1.jpg" alt=""></div>
@@ -74,8 +77,4 @@
             </div>
         </div>
     </div>
-    <footer>
-        <script src="code/geolocation-service.js"></script>
-        <script src="code/copy-pac-url-to-clipboard.js"></script>
-    </footer>
 </div>
