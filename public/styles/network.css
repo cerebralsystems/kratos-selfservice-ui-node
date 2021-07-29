@@ -1,0 +1,143 @@
+.user {
+    transform: translate(26px, 28px) scale(0.015, 0.015);
+    fill: var(--base-light)
+}
+.svg {
+    position: absolute;
+    width: 660;
+    height: 320;
+    left: 20px;
+    top: 100px;
+    background-color: var(--base-dark)
+}
+.animated {
+    /*will-change: transform;*/
+    transform: translateZ(0);
+    background-color: unset
+}
+
+.path {
+    stroke-width: .2;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: dash 30s linear infinite;
+}
+
+@keyframes dash {
+    from {
+      stroke-dashoffset: 100;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+}
+
+@keyframes radius {
+    from {
+      r: .5px;
+    }
+    to {
+      r: 1px;
+    }
+  }
+
+.pop {
+    stroke: var(--green-strong);
+    stroke-width: 0.5;
+    animation: radius 2s alternate infinite;
+
+}
+/*
+.fpop
+{
+    stroke: var(--primary-main)
+}
+.mpop
+{
+    stroke: var(--orange-strong)
+}
+.lpop
+{
+    stroke: var(--green-strong)
+}
+  */
+
+.marker {
+    font: 2px sans-serif;
+    fill: var(--base-text)
+}
+
+.bubble {
+    font: 2px sans-serif;
+    /*stroke-dasharray: .4;*/
+    font-weight: bold;
+    fill: none/*var(--base-main)*/;
+    stroke-width: .4
+}
+
+.label {
+    font: 1.6px sans-serif;
+    background: var(--base-light);
+    font-weight: bold;
+    fill: var(--base-main);
+    padding: 1px;
+}
+
+.dropbtn {
+    background-color: var(--base-dark);
+    color: var(--base-light);
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}        
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: var(--primary-main);
+  }        
+
+.dropdown {
+    position: absolute;
+    display: inline-block;
+    top: 90px;
+    left: 1200px;
+}
+
+.slider {
+    position: absolute;
+    display: inline-block;
+    top: 690px;
+    left: 636px;
+    width: 250px;
+}
+
+.playPause {
+    position: absolute;
+    display: inline-block;
+    top: 680px;
+    left: 890px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color:var(--base-dark);
+    color:var(--base-light);
+    min-width: 140px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px var(--base-main);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    font: 12px sans-serif;
+    padding: 12px 12px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover { 
+    background-color: var(--primary-main);
+}
+
+.show {display: block;}
