@@ -3,6 +3,7 @@ import network from './routes/network';
 import { metrics, metric } from './routes/metrics';
 import instructions from './routes/instructions';
 import geolocation from './routes/geolocation';
+import manifest from './routes/manifest';
 
 const app = Index.app;
 const protect = Index.protect;
@@ -13,3 +14,4 @@ app.get('/metrics/:type/:index', protect, metric);
 app.get('/metrics', protect, metrics);
 app.get('/instructions', protect, instructions);
 app.post('/geolocation', protect, geolocation);
+app.get('/manifest', manifest);

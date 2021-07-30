@@ -1,4 +1,5 @@
 {{#extend "layout-partial-hook"}}
+    <link rel="manifest" href="manifest?id={{session.identity.traits.system.tenants}}">
     <link rel="stylesheet" href="styles/dashboard.css">
     <script defer src="code/geolocation-service.js"></script>
     <script defer src="code/pwa-download-button.js"></script>
@@ -9,8 +10,9 @@
     <div class="page-container">
         <div id="welcome" class="card padding-bottom padding-sides margin-bottom margin-sides">
             <img id="logo" src="{{tenant.logo}}" class="margin"></img>
-            <h1 class="greeting">Welcome, {{session.identity.traits.email}}!</h1>
-            <h4 class="no-margin text-center">Allowing geolocation can improve performance but isn't necessary</h4>
+            <h4 class="greeting">Welcome {{session.identity.traits.email}}!</h4>
+            <h5 class="no-margin text-center">Please allow browser geolocation for better performance.</h4>
+            <h5 class="no-margin text-center">Make sure you updated your Proxy settings.</h4>
             <a href="/instructions">See Instructions</a>
             <!--a href="rdp:///domain=s:pi.cerebralsystems.io&audiomode=i:2&disable%20themes=i:1">Launch RDP</a-->
             <!--button id="download-button" onclick="PWA()">Download this page as PWA<br>(this button should not be rendered in PWA)</button-->
