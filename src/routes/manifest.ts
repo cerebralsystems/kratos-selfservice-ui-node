@@ -1,5 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
-import { authInfo, UserRequest } from '../helpers/authInfo';
+import { Request, Response } from 'express';
 import { AdminApi, Configuration, Identity } from '@ory/kratos-client';
 import config from '../config';
 import * as path from 'path';

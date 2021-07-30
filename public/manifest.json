@@ -1,6 +1,6 @@
 {
-  "name": "Neuron",
-  "short_name": "Neuron",
+  "name": "Cerebral Neuron",
+  "short_name": "Cerebral Neuron",
   "start_url": "dashboard",
   "display_override": ["window-controls-overlay", "minimal-ui"],
   "display": "standalone",

@@ -1,0 +1,15 @@
+[
+    { "name": "skype", "url": "https://www.skype.com/" },
+    { "name": "salesforce", "url": "https://www.salesforce.com" },
+    { "name": "atlassian", "url": "https://www.atlassian.com" },
+    { "name": "confluence", "url": "https://www.atlassian.com" },
+    { "name": "jira", "url": "https://www.atlassian.com" },
+    { "name": "microsoft", "url": "https://www.microsoft.com" },
+    { "name": "github", "url": "https://www.github.com" },
+    { "name": "docker", "url": "https://hub.docker.com" },
+    { "name": "dropbox", "url": "https://www.dropbox.com" },
+    { "name": "jenkins", "url": "https://www.jenkins.io" },
+    { "name": "npm", "url": "https://www.npmjs.com" },
+    { "name": "slack", "url": "https://www.slack.com" },
+    { "name": "medium", "url": "https://www.medium.com" }
+]

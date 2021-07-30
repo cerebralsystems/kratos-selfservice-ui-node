@@ -1,7 +1,12 @@
 import { Request, Response } from 'express';
 import { authInfo, UserRequest } from '../helpers/authInfo';
+import { AdminApi, Configuration, Identity } from '@ory/kratos-client';
+import config from '../config';
+import services from './../servicelist.json';
 
-export default (req: Request, res: Response) => {
+const kratos = new AdminApi(new Configuration({ basePath: config.kratos.admin }));
+
+export default async (req: Request, res: Response) => {
   const ai: any = authInfo(req as UserRequest);
 
   let page : string = '';
@@ -17,23 +22,11 @@ export default (req: Request, res: Response) => {
       page = 'dashboard-tenant';
       break;
     default:
+      context.tenant = (await kratos.getIdentity(ai.claims.session.identity.traits.system.tenants[0])).data;
+      context.logo = context.tenant.traits.branding ? context.tenant.id : 'favicon';
       /// todo: this should be populate from backend
-      context.services = [
-        { name: 'skype', url: 'https://www.skype.com/' },
-        { name: 'salesforce', url: 'https://www.salesforce.com' },
-        { name: 'atlassian', url: 'https://www.atlassian.com' },
-        { name: 'confluence', url: 'https://www.atlassian.com' },
-        { name: 'jira', url: 'https://www.atlassian.com' },
-        { name: 'microsoft', url: 'https://www.microsoft.com' },
-        { name: 'github', url: 'https://www.github.com' },
-        { name: 'docker', url: 'https://hub.docker.com' },
-        { name: 'dropbox', url: 'https://www.dropbox.com' },
-        { name: 'jenkins', url: 'https://www.jenkins.io' },
-        { name: 'npm', url: 'https://www.npmjs.com' },
-        { name: 'slack', url: 'https://www.slack.com' },
-        { name: 'medium', url: 'https://www.medium.com' }
-      ];
-      context.tenant = { logo: 'https://pidatacenters.com/wp-content/uploads/2017/12/xPi-Logo-180x80.png,qv21.pagespeed.ic.jl8m2P42fh.webp' };
+      context.services = services.filter(entry => context.tenant.traits.services.includes(entry.name) ||
+        context.tenant.traits.services.includes(entry.url));
       page = 'dashboard-user';
       break;
   }

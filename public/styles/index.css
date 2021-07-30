@@ -147,6 +147,11 @@ body {
 	margin: 0 auto 2rem 0;
 }
 
+.brandlogo {
+	width: 100px;
+	height: 100px;
+}
+
 .content {
 	font-style: normal;
 	font-weight: normal;
