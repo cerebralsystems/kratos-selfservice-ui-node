@@ -5,7 +5,7 @@ form {
 }
 
 form input,
-form button {
+button {
 	outline: none;
 }
 
@@ -36,7 +36,7 @@ form label input:not(:placeholder-shown) ~ span {
 	color: var(--base-text);
 }
 
-form button {
+button {
 	border-radius: 0.225em;
 	background-color: var(--primary-main);
 	color: var(--base-white);
@@ -51,7 +51,7 @@ form button[type='submit'] + fieldset {
 	margin-top: 1.5em;
 }
 
-form button:hover {
+button:hover {
 	background-color: var(--primary-half);
 	color: var(--primary-dark);
 }

@@ -1,15 +1,54 @@
-[
-    { "name": "skype", "url": "https://www.skype.com/" },
-    { "name": "salesforce", "url": "https://www.salesforce.com" },
-    { "name": "atlassian", "url": "https://www.atlassian.com" },
-    { "name": "confluence", "url": "https://www.atlassian.com" },
-    { "name": "jira", "url": "https://www.atlassian.com" },
-    { "name": "microsoft", "url": "https://www.microsoft.com" },
-    { "name": "github", "url": "https://www.github.com" },
-    { "name": "docker", "url": "https://hub.docker.com" },
-    { "name": "dropbox", "url": "https://www.dropbox.com" },
-    { "name": "jenkins", "url": "https://www.jenkins.io" },
-    { "name": "npm", "url": "https://www.npmjs.com" },
-    { "name": "slack", "url": "https://www.slack.com" },
-    { "name": "medium", "url": "https://www.medium.com" }
-]
+{
+    "skype" : {
+        "url": "https://www.skype.com/",
+        "sites": {"all": ".skype.com"}
+    },
+    "salesforce" : {
+        "url": "https://www.salesforce.com",
+        "sites": {"all": ".salesforce.com"}
+    },
+    "atlassian": {
+        "url": "https://www.atlassian.com",
+        "sites": {"all": ".atlassian.com"}
+    },
+    "confluence": {
+        "url": "https://www.atlassian.com",
+        "sites": {"all": ".atlassian.com"}
+    },
+    "jira": {
+        "url": "https://www.atlassian.com",
+        "sites": {"all": ".atlassian.com"}
+    },
+    "microsoft": {
+        "url": "https://www.microsoft.com" ,
+        "sites": {"all": ".microsoft.com"}
+    },
+    "github": {
+        "url": "https://www.github.com" ,
+        "sites": {"all": ".github.com"}
+    },
+    "docker": {
+        "url": "https://hub.docker.com",
+        "sites": {"all": ".docker.com"}
+    },
+    "dropbox": {
+        "url": "https://www.dropbox.com",
+        "sites": {"all": ".dropbox.com"}
+    },
+    "jenkins": {
+        "url": "https://www.jenkins.io",
+        "sites": {"all": ".jenkins.io"}
+    },
+    "npm": {
+        "url": "https://www.npmjs.com",
+        "sites": {"all": ".npmjs.com"}
+    },
+    "slack": {
+        "url": "https://www.slack.com",
+        "sites": {"all": ".slack.com"}
+    },
+    "medium": {
+        "url": "https://www.medium.com",
+        "sites": {"all": ".medium.com"}
+    }
+}

@@ -8,26 +8,36 @@ const kratos = new AdminApi(new Configuration({ basePath: config.kratos.admin })
 
 export default async (req: Request, res: Response) => {
   const ai: any = authInfo(req as UserRequest);
+  const identity: any = ai.claims.session.identity;
 
   let page : string = '';
   const context : any = {
     session: ai.claims.session,
     url: req.hostname
   };
-  switch (ai.claims.session.identity.schema_id) {
+  switch (identity.schema_id) {
     case 'admin':
       page = 'dashboard-admin';
       break;
     case 'tenant':
       page = 'dashboard-tenant';
+      context.admin = true;
+      context.services = Object.keys(services).map((k : string) => {
+        return {
+          name: k,
+          url: (services as any)[k].url,
+          checked: identity.traits.services.find((s: any) => s.name === k) !== undefined
+        };
+      });
       break;
     default:
-      context.tenant = (await kratos.getIdentity(ai.claims.session.identity.traits.system.tenants[0])).data;
-      context.logo = context.tenant.traits.branding ? context.tenant.id : 'favicon';
-      /// todo: this should be populate from backend
-      context.services = services.filter(entry => context.tenant.traits.services.includes(entry.name) ||
-        context.tenant.traits.services.includes(entry.url));
       page = 'dashboard-user';
+      context.tenant = (await kratos.getIdentity(identity.traits.system.tenants[0])).data;
+      context.logo = context.tenant.traits.branding ? context.tenant.id : 'favicon';
+      /// todo: this should be populated from backend
+      context.services = context.tenant.traits.services.map((s : any) => {
+        return { name: s.name, url: (services as any)[s.name].url };
+      });
       break;
   }
   res.render(page, context);

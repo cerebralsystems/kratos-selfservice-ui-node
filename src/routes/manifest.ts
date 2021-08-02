@@ -2,8 +2,8 @@ import { Request, Response } from 'express';
 import { AdminApi, Configuration, Identity } from '@ory/kratos-client';
 import config from '../config';
 import * as path from 'path';
-var fs = require('fs');
-var manifestFilePath = path.join(__dirname, '../../public/manifest.json');
+const fsp = require('fs').promises;
+const manifestFilePath = path.join(__dirname, '../../public/manifest.json');
 
 const kratos = new AdminApi(new Configuration({ basePath: config.kratos.admin }));
 
@@ -18,7 +18,7 @@ export default async (req: Request, res: Response) => {
     });
   } else {
     // stream default Cerebral manifest
-    var readable = fs.createReadStream(manifestFilePath);
+    var readable = fsp.createReadStream(manifestFilePath);
     readable.pipe(res);
   }
 };

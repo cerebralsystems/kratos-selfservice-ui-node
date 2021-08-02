@@ -1,15 +1,26 @@
+{{#extend "layout-partial-hook"}}
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <script defer src="code/tenant.js"></script>
+{{/extend}}
 <div class="content">
-    <header>
-        <link rel="stylesheet" href="styles/dashboard.css" ></link>
-    </header>
     {{> header}}
     <div class="page-container">
         <div id="welcome" class="card padding margin">
-            Tenant Admin KPI's and Links
+            <h4 class="greeting">Welcome {{session.identity.traits.email}}!</h4>
         </div>
-        <div class="flex">
-            <div class="card padding margin">
-                
+        <div class="card padding margin text-center">
+            <h5>Check and submit services you want to enable via Neuron.</h5>
+            <button onclick="postServicesData()">Submit</button>
+            <div class="padding margin flex-wrap justify">                
+{{#each services}}
+                <div id="app-container" class="card padding flex-col justify-space-between align-items">
+                    <a >
+                        <i class="icon fab fa-{{this.name}}"></i>
+                    </a>
+                    <input id="{{this.name}}" name="{{this.name}}" {{#if this.checked}}checked{{/if}} type="checkbox" value="true">
+                    <p class="no-margin">{{this.name}}</p>
+                </div>
+{{/each}}
             </div>
         </div>
     </div>

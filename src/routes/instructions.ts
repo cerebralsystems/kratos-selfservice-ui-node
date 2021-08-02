@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { authInfo, UserRequest } from '../helpers/authInfo';
 
 export default (req: Request, res: Response) => {
@@ -6,7 +6,7 @@ export default (req: Request, res: Response) => {
 
   const context : any = {
     session: ai.claims.session,
-    url: req.hostname
+    url: req.headers.host
   };
 
   res.render('instructions', context);

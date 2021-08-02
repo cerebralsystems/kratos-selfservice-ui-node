@@ -27,15 +27,14 @@
                     <p class="no-margin"><span id="vdi-span">vdi.pi.cerebralsystems.io</span></p>
                 </div>
 
-                {{#each services}}
-                    <div id="app-container" class="card padding flex-col justify-space-between align-items">
-                        <a href="{{this.url}}" target="_blank">
-                            <i class="icon fab fa-{{this.name}}"></i>
-                            <!--object class="svg-icon" type="image/svg+xml" data="icons/skype.svg"></object-->
-                        </a>
-                        <p class="no-margin">{{this.name}}</p>
-                    </div>
-                {{/each}}              
+{{#each services}}
+                <div id="app-container" class="card padding flex-col justify-space-between align-items">
+                    <a href="{{this.url}}" target="_blank">
+                        <i class="icon fab fa-{{this.name}}"></i>
+                    </a>
+                    <p class="no-margin">{{this.name}}</p>
+                </div>
+{{/each}}                
             </div>
         </div>
     </div>

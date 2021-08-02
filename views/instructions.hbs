@@ -7,7 +7,7 @@
         <div class="card padding margin">
             <h4 class="text-center">Step 0: Here is your .pac file URL</h4>
             <div id="copy-container" class="thin-margin" style="display:absolute">
-                <div id="copy" onclick="copy('pac-span', 'pac-copied')"><span id="pac-span">https://{{url}}/pac/{{session.identity.id}}.pac</span><img id="copy-image" src="images/copy.svg" alt=""></div>
+                <div id="copy" onclick="copy('pac-span', 'pac-copied')"><span id="pac-span">{{url}}/pac/{{session.identity.id}}.pac</span><img id="copy-image" src="images/copy.svg" alt=""></div>
                 <div id="pac-copied" class="copied">Copied!</div>
             </div>
         </div>
