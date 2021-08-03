@@ -89,7 +89,7 @@
 	color: var(--primary-main);
 }
 
-#app-container:hover {
+#app-container:hover:not(.nohover){
 	background-color: var(--base-main);
 }
 
