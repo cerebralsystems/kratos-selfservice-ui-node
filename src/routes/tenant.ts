@@ -49,7 +49,7 @@ export const generatePacFile = async (req: Request, user: Identity) : Promise<st
 // update service list at the tenant level
 export const updateServices = async (req: Request, res: Response) => {
   const ai = authInfo(req as UserRequest);
-  const tenant: any = ai.claims.session.identity;
+  const tenant: Identity = ai.claims.session.identity;
 
   // bailout if not logged in as a tenant
   if (tenant.schema_id !== 'tenant') { return; }
@@ -70,7 +70,7 @@ export const updateServices = async (req: Request, res: Response) => {
       if (identity.schema_id === 'default' &&
         traits.system.neuron &&
         traits.system.tenants.includes(tenant.id) // if the user belongs to this tenant
-      ) { updateUserData(req, identity); }
+      ) { updateUserData(req, tenant.id, identity); }
     });
     if (identities.length < pageSize) { break; }
   }
@@ -78,8 +78,8 @@ export const updateServices = async (req: Request, res: Response) => {
   res.sendStatus(200);
 };
 
-// re-generates all user related artifcats such as pac files, flows, etc.
-export const updateUserData = async (req: Request, user: Identity) => {
+// re-generates all user related artifacts such as pac files, flows, etc.
+export const updateUserData = async (req: Request, tenantId: string, user: Identity) => {
   const svcs: string[] = await generatePacFile(req, user);
   const traits: any = user.traits;
   const updateIdentity: UpdateIdentity = { traits };
@@ -92,7 +92,12 @@ export const updateUserData = async (req: Request, user: Identity) => {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ id: user.id, firstMiles: traits.system.neuron.ips, services: svcs })
+    body: JSON.stringify({
+      id: user.id,
+      tenantId: tenantId,
+      firstMiles: traits.system.neuron.ips,
+      services: svcs
+    })
   }))
     .json();
 };

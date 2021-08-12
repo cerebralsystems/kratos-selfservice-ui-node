@@ -8,7 +8,7 @@
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
             "name": "nodemon",
-            "program": "${workspaceFolder}/src/cindex.ts",
+            "program": "${workspaceFolder}/src/index.ts",
             "request": "launch",
             "restart": true,
             "runtimeExecutable": "nodemon",
@@ -21,7 +21,7 @@
                 "KRATOS_BROWSER_URL": "http://127.0.0.1:4433/",
                 "KRATOS_PUBLIC_URL": "http://127.0.0.1:4433/",
                 "KRATOS_ADMIN_URL": "http://127.0.0.1:4434/",
-                "FIRST_MILE_LOC_URL": "http://127.0.0.1:8080/",
+                /*"FIRST_MILE_LOC_URL": "http://127.0.0.1:8080/",*/
                 "FLOW_MANAGER_URL": "http://127.0.0.1:5335/",
                 "PORT": "4455",
                 "PROJECT_NAME": "Cerebral Systems",

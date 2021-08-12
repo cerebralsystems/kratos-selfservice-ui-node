@@ -11,9 +11,16 @@
         <div class="card padding margin text-center">
             <h5>Check and submit services you want to enable via Neuron.</h5>
             <button onclick="postServicesData()">Submit</button>
-            <div class="padding margin flex-wrap justify">                
+            <div class="padding margin flex-wrap justify">
+                <div id="app-container" class="card padding flex-col justify-space-between align-items">
+                    <a >
+                        <i class="icon fa fa-plus action"></i>
+                    </a>
+                    <p class="no-margin">Add Service</p>
+                </div> 
 {{#each services}}
                 <div id="app-container" class="nohover card padding flex-col justify-space-between align-items">
+                    <i class="icon fa fa-ellipsis-v text-right"></i>
                     <a >
                         <i class="icon fab fa-{{this.name}}"></i>
                     </a>

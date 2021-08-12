@@ -46,8 +46,8 @@ function FindProxyForURL (url, host) {
     || dnsDomainIs(host, '{{this}}')
     {{/each}}
   ) {
-    // proxy through '{{neuron.name}}'    
-    return 'PROXY {{#each neuron.ips}}{{this}}:443; {{/each}}DIRECT';
+    // proxy through '{{neuron.name}}'
+    return '{{#each neuron.ips}}PROXY {{this}}:443; {{/each}}DIRECT';
   }
 
   // if (url.substring(0, 6) == 'https:') { return 'PROXY 54.183.161.170:443'; }

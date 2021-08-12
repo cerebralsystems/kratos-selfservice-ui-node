@@ -53,6 +53,11 @@ export const metric = async (req: Request, res: Response) => {
 };
 
 async function scanMeasures (directoryName: string) {
+  try {
+    await fsp.stat(process.env.MEASURE_DIR);
+  } catch (err) {
+    return;
+  }
   const files = await fsp.readdir(directoryName, { withFileTypes: true });
   for (const f of files) {
     const fullPath: string = path.join(directoryName, f.name);

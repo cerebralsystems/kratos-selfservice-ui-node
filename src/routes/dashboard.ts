@@ -18,6 +18,12 @@ export default async (req: Request, res: Response) => {
   switch (identity.schema_id) {
     case 'admin':
       page = 'dashboard-admin';
+      context.admin = true;
+      /// todo: add support for pagination
+      const identities: Identity[] = (await kratos.listIdentities(100, 0)).data;
+      context.tenants = identities
+        .filter((tenant : Identity) => tenant.schema_id === 'tenant')
+        .map((tenant : Identity) => tenant);
       break;
     case 'tenant':
       page = 'dashboard-tenant';

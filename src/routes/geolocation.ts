@@ -3,7 +3,9 @@ import { AdminApi, Configuration, Identity } from '@ory/kratos-client';
 import fetch from 'node-fetch';
 import config from '../config';
 import { authInfo, UserRequest } from '../helpers/authInfo';
-import { generatePacFile, updateUserData } from './tenant';
+import { updateUserData } from './tenant';
+import neurons from './../neuronlist.json';
+import { calculateDistance } from './../helpers/helper';
 
 const kratos = new AdminApi(new Configuration({ basePath: config.kratos.admin }));
 const validateIPaddress = (ipAddress: string) => ipAddress.match(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/);
@@ -33,14 +35,35 @@ export default async (req: Request, res: Response) => {
 };
 
 const getNearestNeuron = async (data: any) => {
-  const neuron: any = await (await fetch(process.env.FIRST_MILE_LOC_URL!, {
+  const userLoc = {
+    lat: data.lat ? data.lat : Infinity,
+    lng: data.lng ? data.lng : Infinity
+  };
+  let neuron = neurons[0]; // in case of running locally
+  if ((userLoc.lat === Infinity || userLoc.lng === Infinity) && data.ip4) {
+    const ip4 = data.ip4;
+    if (!ip4.startsWith('127') && !ip4.startsWith('0') && !ip4.startsWith('localhost')) {
+      const geopluginResponse = await (await fetch(`http://www.geoplugin.net/json.gp?ip=${ip4}`)).json();
+      console.log(geopluginResponse);
+      if (userLoc.lat === Infinity) {
+        userLoc.lat = geopluginResponse.geoplugin_latitude;
+      }
+      if (userLoc.lng === Infinity) {
+        userLoc.lng = geopluginResponse.geoplugin_longitude;
+      }
+    }
+  }
+  for (const n of neurons) { n.distance = calculateDistance(userLoc.lat, userLoc.lng, n.lat, n.lng); }
+  neuron = neurons.reduce((selected, comparable) => selected.distance <= comparable.distance ? selected : comparable);
+
+  /* const neuron: any = await (await fetch(process.env.FIRST_MILE_LOC_URL!, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(data)
   }))
-    .json();
+    .json(); */
 
   return neuron;
 };
@@ -57,7 +80,7 @@ const updateLocationByIP = async (req: Request, coords: any, ip4: string, user: 
       // this is useful if we have to offline regenerate pac files and flows when tenant services change
       traits.system.neuron = neuron;
       traits.system.ip4 = ip4;
-      updateUserData(req, user);
+      updateUserData(req, traits.system.tenants[0], user);
 
       return true;
     } catch (error) {

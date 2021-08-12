@@ -1,15 +1,31 @@
-<div class="content">
-    <header>
-        <link rel="stylesheet" href="styles/dashboard.css" ></link>
-    </header>
+{{#extend "layout-partial-hook"}}
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <script defer src="code/tenant.js"></script>
+{{/extend}}
+<div class="content">    
     {{> header}}
     <div class="page-container">
         <div id="welcome" class="card padding margin">
             Admin
         </div>
-        <div class="flex">
-            <div class="card padding margin">
-                
+        <div class="card padding margin text-center">
+            <div class="padding margin flex-wrap justify">
+                <h5>Tenants</h5>
+                <div id="app-container" class="card padding flex-col justify-space-between align-items">
+                    <a >
+                        <i class="icon fa fa-plus action"></i>
+                    </a>
+                    <p class="no-margin">Create Tenant</p>
+                </div>             
+{{#each tenants}}
+                <div id="app-container" class="nohover card padding flex-col justify-space-between align-items">
+                    <i class="icon fa fa-ellipsis-v text-right"></i>
+                    <a>
+                        <img class="icon" src="icons/{{this.id}}.png"></img>
+                    </a>
+                    <p class="no-margin">{{this.traits.name}}</p>
+                </div>
+{{/each}}   
             </div>
         </div>
     </div>

@@ -15,6 +15,12 @@ import morgan from 'morgan';
 import * as path from 'path';
 import protectSimple from './middleware/simple';
 import protectOathkeeper from './middleware/oathkeeper';
+import { metrics, metric } from './routes/metrics';
+import { updateServices } from './routes/tenant';
+import network from './routes/network';
+import instructions from './routes/instructions';
+import geolocation from './routes/geolocation';
+import manifest from './routes/manifest';
 
 export const protect =
   config.securityMode === SECURITY_MODE_JWT ? protectOathkeeper : protectSimple;
@@ -70,6 +76,16 @@ app.get('/recovery', recoveryHandler);
 app.get('/health', (_: Request, res: Response) => res.send('ok'));
 app.get('/debug', debug);
 
+// cerebral routes
+app.get('/network', protect, network);
+app.get('/metrics/:type/:index', protect, metric);
+app.get('/metrics', protect, metrics);
+app.get('/instructions', protect, instructions);
+app.post('/geolocation', protect, geolocation);
+app.post('/tenant/updateServices', protect, updateServices);
+
+// Do not protect the following routes
+app.get('/manifest', manifest);
 // app.get('*', (_: Request, res: Response) => {
 //   res.redirect(config.baseUrl);
 // });

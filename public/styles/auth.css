@@ -18,7 +18,7 @@
 }
 
 .auth a:hover {
-    color: var(--base-white);
+    color: var(--base-dark);
 }
 
 .auth .alternative-actions {

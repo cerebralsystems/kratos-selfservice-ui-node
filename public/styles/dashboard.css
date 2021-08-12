@@ -68,8 +68,6 @@
 }
 
 #download-button {
-	background-color: blue;
-	color: white;
 	min-height: 20px;
 }
 
@@ -89,6 +87,11 @@
 	color: var(--primary-main);
 }
 
+#app-container > a > .action {
+	font-size: 72px;
+	color: var(--green-strong);
+}
+
 #app-container:hover:not(.nohover){
 	background-color: var(--base-main);
 }
@@ -98,3 +101,9 @@
 	width: 100%;
 	pointer-events: none;
 }
+
+#app-container > a > img {
+	width: 72px;
+	height: 72px;
+}
+
