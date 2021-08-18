@@ -43,7 +43,7 @@ function FindProxyForURL (url, host) {
   /* Proxy tenant selected services */
   if (false
     {{#each services}}
-    || dnsDomainIs(host, '{{this}}')
+    || dnsDomainIs(host, '.{{this}}')
     {{/each}}
   ) {
     // proxy through '{{neuron.name}}'

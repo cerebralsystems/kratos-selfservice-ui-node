@@ -15,6 +15,7 @@ export default async (req: Request, res: Response) => {
   const user: Identity = ai.claims.session.identity;
   const traits: any = user.traits;
 
+  console.log('Received location update');
   let ip: string | undefined = req.connection.remoteAddress?.split(':').slice(-1)[0];
   if (ip !== undefined && user.schema_id === 'default') {
     if (Array.isArray(ip)) {
@@ -40,18 +41,23 @@ const getNearestNeuron = async (data: any) => {
     lng: data.lng ? data.lng : Infinity
   };
   let neuron = neurons[0]; // in case of running locally
-  if ((userLoc.lat === Infinity || userLoc.lng === Infinity) && data.ip4) {
-    const ip4 = data.ip4;
-    if (!ip4.startsWith('127') && !ip4.startsWith('0') && !ip4.startsWith('localhost')) {
-      const geopluginResponse = await (await fetch(`http://www.geoplugin.net/json.gp?ip=${ip4}`)).json();
-      console.log(geopluginResponse);
-      if (userLoc.lat === Infinity) {
-        userLoc.lat = geopluginResponse.geoplugin_latitude;
-      }
-      if (userLoc.lng === Infinity) {
-        userLoc.lng = geopluginResponse.geoplugin_longitude;
+  try {
+    if ((userLoc.lat === Infinity || userLoc.lng === Infinity) && data.ip4) {
+      const ip4 = data.ip4;
+      if (!ip4.startsWith('127') && !ip4.startsWith('0') && !ip4.startsWith('localhost')) {
+        console.log('Getting location from geoplugin');
+        const geopluginResponse = await (await fetch(`http://www.geoplugin.net/json.gp?ip=${ip4}`)).json();
+        console.log(geopluginResponse);
+        if (userLoc.lat === Infinity) {
+          userLoc.lat = geopluginResponse.geoplugin_latitude;
+        }
+        if (userLoc.lng === Infinity) {
+          userLoc.lng = geopluginResponse.geoplugin_longitude;
+        }
       }
     }
+  } catch (err) {
+    console.error('Failed to location from geoplugin');
   }
   for (const n of neurons) { n.distance = calculateDistance(userLoc.lat, userLoc.lng, n.lat, n.lng); }
   neuron = neurons.reduce((selected, comparable) => selected.distance <= comparable.distance ? selected : comparable);

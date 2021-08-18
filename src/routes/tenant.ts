@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import fetch from 'node-fetch';
 import { Identity, V0alpha1Api, Configuration, AdminUpdateIdentityBody, IdentityState } from '@ory/kratos-client';
 import { authInfo, UserRequest } from '../helpers/authInfo';
 import * as path from 'path';
@@ -23,6 +24,7 @@ export const generatePacFile = async (req: Request, user: Identity) : Promise<st
   } catch (err) {
     // tenant has no pac file - fallback to cerebral default pac template
     templatePacFile = 'cerebral.pac.hbs';
+    console.log('Tenant has no pac template');
   }
 
   // build a list of services enabled by tenant
@@ -42,7 +44,11 @@ export const generatePacFile = async (req: Request, user: Identity) : Promise<st
   // render the pac file and save it using the template
   req.app.render(templatePacFile, { tenant: tenant, neuron: traits.system.neuron, services: svcs, layout: false }, (e, content) => {
     console.log('Writing user pac file');
-    fsp.writeFile(path.join(pacPath, user.id + '.pac'), content);
+    try {
+      fsp.writeFile(path.join(pacPath, user.id + '.pac'), content);
+    } catch (err) {
+      console.error('Failed to write pac file');
+    }
   });
   return svcs;
 };
@@ -62,6 +68,7 @@ export const updateServices = async (req: Request, res: Response) => {
 
   /// todo: find a better way to retrieve and update only relavant users
   /// as the number of users and tenant scale, this needs to move to a offline task (workflow systems or kafka)
+  console.log('Updating all tenant identities');
   let index = 0;
   const pageSize: number = 100;
   while (true) {
@@ -84,11 +91,18 @@ export const updateUserData = async (req: Request, tenantId: string, user: Ident
   const svcs: string[] = await generatePacFile(req, user);
   const traits: any = user.traits;
   const updateIdentity: AdminUpdateIdentityBody = { schema_id: user.schema_id, traits: traits, state: IdentityState.Active };
-  const updateIdentityResponse = await kratos.adminUpdateIdentity(user.id, updateIdentity);
-  user = updateIdentityResponse.data;
+
+  try {
+    console.log('Updating identity');
+    const updateIdentityResponse = await kratos.adminUpdateIdentity(user.id, updateIdentity);
+    user = updateIdentityResponse.data;
+  } catch (err) {
+    console.error('Failed to update identity: ' + err);
+  }
 
   try {
   // Call flow manager with the user id, first mile, sourceIp, hostnames and service list
+    console.log('Updating flow manager');
     const res: JSON = await (await fetch(process.env.FLOW_MANAGER_URL! + 'flows', {
       method: 'POST',
       headers: {
@@ -103,7 +117,8 @@ export const updateUserData = async (req: Request, tenantId: string, user: Ident
       })
     }))
       .json();
+    console.log('Updated flow manager.');
   } catch (err) {
-    console.log('Failed to update flow manager.');
+    console.warn('Failed to update flow manager.');
   }
 };

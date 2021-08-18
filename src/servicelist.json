@@ -1,114 +1,114 @@
 {
     "atlassian": {
         "url": "https://www.atlassian.com",
-        "sites": {"all": [".atlassian.com"]}
+        "sites": {"all": ["atlassian.com"]}
     },
     "confluence": {
         "url": "https://www.atlassian.com",
-        "sites": {"all": [".atlassian.com"]}
+        "sites": {"all": ["atlassian.com"]}
     },
     "docker": {
         "url": "https://hub.docker.com",
-        "sites": {"all": [".docker.com"]}
+        "sites": {"all": ["docker.com"]}
     },
     "dropbox": {
         "url": "https://www.dropbox.com",
-        "sites": {"all": [".dropbox.com"]}
+        "sites": {"all": ["dropbox.com"]}
     },
     "evernote": {
         "url": "https://www.evernote.com",
-        "sites": {"all": [".evernote.com"]}
+        "sites": {"all": ["evernote.com"]}
     },
     "figma": {
         "url": "https://www.figma.com",
-        "sites": {"all": [".figma.com"]}
+        "sites": {"all": ["figma.com"]}
     },
     "github": {
         "url": "https://www.github.com" ,
-        "sites": {"all": [".github.com"]}
+        "sites": {"all": ["github.com"]}
     },
     "google-drive": {
         "url": "https://drive.google.com",
-        "sites": {"all": [".drive.google.com"]}
+        "sites": {"all": ["drive.google.com"]}
     },
     "hornbill": {
         "url": "https://www.hornbill.com",
-        "sites": {"all": [".hornbill.com"]}
+        "sites": {"all": ["hornbill.com"]}
     },
     "hotjar": {
         "url": "https://www.hotjar.com",
-        "sites": {"all": [".hotjar.com"]}
+        "sites": {"all": ["hotjar.com"]}
     },
     "hubspot": {
         "url": "https://www.hubspot.com",
-        "sites": {"all": [".hubspot.com"]}
+        "sites": {"all": ["hubspot.com"]}
     },
     "intercom": {
         "url": "https://www.intercom.com",
-        "sites": {"all": [".intercom.com"]}
+        "sites": {"all": ["intercom.com"]}
     },
     "jenkins": {
         "url": "https://www.jenkins.io",
-        "sites": {"all": [".jenkins.io"]}
+        "sites": {"all": ["jenkins.io"]}
     },
     "jira": {
         "url": "https://www.atlassian.com",
-        "sites": {"all": [".atlassian.com"]}
+        "sites": {"all": ["atlassian.com"]}
     },
     "joget": {
         "url": "https://www.joget.com",
-        "sites": {"all": [".joget.com"]}
+        "sites": {"all": ["joget.com"]}
     },
     "kaggle": {
         "url": "https://www.kaggle.com",
-        "sites": {"all": [".kaggle.com"]}
+        "sites": {"all": ["kaggle.com"]}
     },
     "korvue": {
         "url": "https://www.korvue.com",
-        "sites": {"all": [".korvue.com"]}
+        "sites": {"all": ["korvue.com"]}
     },
     "mailchimp": {
         "url": "https://www.mailchimp.com",
-        "sites": {"all": [".mailchimp.com"]}
+        "sites": {"all": ["mailchimp.com"]}
     },
     "medium": {
         "url": "https://www.medium.com",
-        "sites": {"all": [".medium.com"]}
+        "sites": {"all": ["medium.com"]}
     },
     "microsoft": {
         "url": "https://www.microsoft.com" ,
-        "sites": {"all": [".microsoft.com"]}
+        "sites": {"all": ["microsoft.com"]}
     },
     "npm": {
         "url": "https://www.npmjs.com",
-        "sites": {"all": [".npmjs.com"]}
+        "sites": {"all": ["npmjs.com"]}
     },
     "rocketchat": {
         "url": "https://www.rocketchat.com",
-        "sites": {"all": [".rocketchat.com"]}
+        "sites": {"all": ["rocketchat.com"]}
     },
     "salesforce" : {
         "url": "https://www.salesforce.com",
-        "sites": {"all": [".salesforce.com"]}
+        "sites": {"all": ["salesforce.com"]}
     },
     "sellsy" : {
         "url": "https://www.sellsy.com",
-        "sites": {"all": [".sellsy.com"]}
+        "sites": {"all": ["sellsy.com"]}
     },    
     "sketch" : {
         "url": "https://www.sketch.com/",
-        "sites": {"all": [".sketch.com"]}
+        "sites": {"all": ["sketch.com"]}
     },
     "skype" : {
         "url": "https://www.skype.com/",
-        "sites": {"all": [".skype.com"]}
+        "sites": {"all": ["skype.com"]}
     },
     "slack": {
         "url": "slack://open",
-        "sites": {"all": [".slack.com"]}
+        "sites": {"all": ["slack.com"]}
     },
     "trello": {
         "url": "https://www.trello.com",
-        "sites": {"all": [".trello.com"]}
+        "sites": {"all": ["trello.com"]}
     }
 }
