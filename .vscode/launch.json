@@ -18,11 +18,14 @@
             "type": "pwa-node",
             "env": {
                 "SECURITY_MODE": "cookie",
-                "KRATOS_BROWSER_URL": "http://127.0.0.1:4433/",
-                "KRATOS_PUBLIC_URL": "http://127.0.0.1:4433/",
-                "KRATOS_ADMIN_URL": "http://127.0.0.1:4434/",
+                "KRATOS_BROWSER_URL": "https://127.0.0.1:4433/",
+                "KRATOS_PUBLIC_URL": "https://127.0.0.1:4433/",
+                "KRATOS_ADMIN_URL": "https://127.0.0.1:4434/",
                 /*"FIRST_MILE_LOC_URL": "http://127.0.0.1:8080/",*/
-                "FLOW_MANAGER_URL": "http://127.0.0.1:5335/",
+                "FLOW_MANAGER_URL": "https://127.0.0.1:5334/",
+                "TLS_KEY_PATH": "../portal_docker/key.pem",
+                "TLS_CERT_PATH": "../portal_docker/cert.crt",
+                "PERSIST_FILES_PATH": "../persist",
                 "PORT": "4455",
                 "PROJECT_NAME": "Cerebral Systems",
                 "MEASURE_DIR":"../measure_files/cron-measure",

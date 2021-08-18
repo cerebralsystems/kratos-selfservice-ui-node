@@ -21,11 +21,17 @@ import network from './routes/network';
 import instructions from './routes/instructions';
 import geolocation from './routes/geolocation';
 import manifest from './routes/manifest';
+import axios from 'axios';
+import https from 'https';
+const fs = require('fs');
+
+https.globalAgent.options.rejectUnauthorized = false;
 
 export const protect =
   config.securityMode === SECURITY_MODE_JWT ? protectOathkeeper : protectSimple;
 
 export const app = express();
+app.use(express.static(path.join(process.env.PERSIST_FILES_PATH as string)));
 app.use(morgan('tiny'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -99,4 +105,19 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 const port = Number(process.env.PORT) || 3000;
 
-app.listen(port);
+const listener = () => {
+  const proto = config.https.enabled ? 'https' : 'http';
+  console.log(`Listening on ${proto}://0.0.0.0:${port}`);
+  console.log(`Security mode: ${config.securityMode}`);
+};
+
+if (config.https.enabled) {
+  const options = {
+    cert: fs.readFileSync(config.https.certificatePath),
+    key: fs.readFileSync(config.https.keyPath)
+  };
+
+  https.createServer(options, app).listen(port, listener);
+} else {
+  app.listen(port, listener);
+}

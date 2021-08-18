@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { AdminApi, Configuration, Identity } from '@ory/kratos-client';
+import { V0alpha1Api, Configuration, Identity } from '@ory/kratos-client';
 import fetch from 'node-fetch';
 import config from '../config';
 import { authInfo, UserRequest } from '../helpers/authInfo';
@@ -7,7 +7,7 @@ import { updateUserData } from './tenant';
 import neurons from './../neuronlist.json';
 import { calculateDistance } from './../helpers/helper';
 
-const kratos = new AdminApi(new Configuration({ basePath: config.kratos.admin }));
+const kratos = new V0alpha1Api(new Configuration({ basePath: config.kratos.admin }));
 const validateIPaddress = (ipAddress: string) => ipAddress.match(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/);
 
 export default async (req: Request, res: Response) => {
@@ -78,7 +78,7 @@ const updateLocationByIP = async (req: Request, coords: any, ip4: string, user: 
       const neuron = await getNearestNeuron({ lat, lng, ip4 });
       console.log(neuron);
       // this is useful if we have to offline regenerate pac files and flows when tenant services change
-      traits.system.neuron = neuron;
+      traits.system.neuron = neuron.name;
       traits.system.ip4 = ip4;
       updateUserData(req, traits.system.tenants[0], user);
 

@@ -5,6 +5,7 @@
       "lat":  39.04702183260987,
       "lng":  -77.48742332949966,
       "ips":  ["34.228.153.163"],
+      "hostNames":  ["ec2-34-228-153-163.compute-1.amazonaws.com"],
       "distance":  0
     },
     {
@@ -13,6 +14,11 @@
       "lat":  37.342102715034294,
       "lng":  -121.89089376834649,
       "ips":  ["54.151.53.139", "54.183.161.170", "54.67.84.52"],
+      "hostNames":  [
+        "ec2-54-67-84-52.us-west-1.compute.amazonaws.com",
+        "ec2-54-151-53-139.us-west-1.compute.amazonaws.com", 
+        "ec2-54-183-161-170.us-west-1.compute.amazonaws.com"
+      ],
       "distance":  0
     },
     {
@@ -21,6 +27,7 @@
       "lat":  19.074228785417848,
       "lng":  72.87828753841822,
       "ips":  ["15.206.202.17"],
+      "hostNames":  ["ec2-15-206-202-17.ap-south-1.compute.amazonaws.com"],
       "distance":  0
     },
     {
@@ -29,6 +36,10 @@
       "lat":  1.355183676647936,
       "lng":  103.86346370926272,
       "ips":  ["52.77.219.116", "54.151.213.243"],
+      "hostNames": [
+        "ec2-52-77-219-116.ap-southeast-1.compute.amazonaws.com",
+        "ec2-54-151-213-243.ap-southeast-1.compute.amazonaws.com"
+      ],
       "distance":  0
     },
     {
@@ -37,6 +48,7 @@
       "lat":  51.52403596392165,
       "lng":  -0.12085433476364711,
       "ips":  ["18.133.187.54", "35.178.253.203"],
+      "hostNames":  ["ec2-35-178-253-203.eu-west-2.compute.amazonaws.com"],
       "distance":  0
     }
   ]

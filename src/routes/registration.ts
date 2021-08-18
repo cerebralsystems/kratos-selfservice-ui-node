@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { Configuration, PublicApi, RegistrationFlow } from '@ory/kratos-client';
+import { Configuration, V0alpha1Api } from '@ory/kratos-client';
 
 import config from '../config';
 import { isString, redirectOnSoftError } from '../helpers/sdk';
@@ -22,7 +22,7 @@ import { isString, redirectOnSoftError } from '../helpers/sdk';
 // Uses the ORY Kratos NodeJS SDK - for more SDKs check:
 //
 //  https://www.ory.sh/kratos/docs/sdk/index
-const kratos = new PublicApi(new Configuration({ basePath: config.kratos.public }));
+const kratos = new V0alpha1Api(new Configuration({ basePath: config.kratos.public }));
 
 // A simple express handler that shows the login / registration screen.
 // Argument "type" can either be "login" or "registration" and will
@@ -44,11 +44,9 @@ export default (
     return;
   }
 
-  kratos.getSelfServiceRegistrationFlow(flow)
-    .then((response) => {
-      const { status } = response;
-      const flow: RegistrationFlow = response.data;
-
+  kratos
+    .getSelfServiceRegistrationFlow(flow, req.header('Cookie'))
+    .then(({ status, data: flow }) => {
       if (status !== 200) {
         return Promise.reject(flow);
       }

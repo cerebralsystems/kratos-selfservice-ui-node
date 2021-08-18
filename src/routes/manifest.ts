@@ -1,14 +1,14 @@
 import { Request, Response } from 'express';
-import { AdminApi, Configuration, Identity } from '@ory/kratos-client';
+import { V0alpha1Api, Configuration, Identity } from '@ory/kratos-client';
 import config from '../config';
 import * as path from 'path';
 const fsp = require('fs').promises;
 const manifestFilePath = path.join(__dirname, '../../public/manifest.json');
 
-const kratos = new AdminApi(new Configuration({ basePath: config.kratos.admin }));
+const kratos = new V0alpha1Api(new Configuration({ basePath: config.kratos.admin }));
 
 export default async (req: Request, res: Response) => {
-  const tenant : any = (await kratos.getIdentity(req.query.id as string)).data;
+  const tenant : any = (await kratos.adminGetIdentity(req.query.id as string)).data;
 
   res.set('content-type', 'application/json');
   if (tenant.traits.branding) {
