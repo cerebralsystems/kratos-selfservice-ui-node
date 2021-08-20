@@ -3,6 +3,7 @@ import { V0alpha1Api, Configuration, Identity } from '@ory/kratos-client';
 import config from '../config';
 import * as path from 'path';
 const fsp = require('fs').promises;
+const createReadStream = require('fs').createReadStream;
 const manifestFilePath = path.join(__dirname, '../../public/manifest.json');
 
 const kratos = new V0alpha1Api(new Configuration({ basePath: config.kratos.admin }));
@@ -18,7 +19,7 @@ export default async (req: Request, res: Response) => {
     });
   } else {
     // stream default Cerebral manifest
-    var readable = fsp.createReadStream(manifestFilePath);
+    var readable = createReadStream(manifestFilePath);
     readable.pipe(res);
   }
 };

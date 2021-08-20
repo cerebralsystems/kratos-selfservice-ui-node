@@ -40,12 +40,19 @@ export default async (req: Request, res: Response) => {
     default:
       page = 'dashboard-user';
       context.tenant = (await kratos.adminGetIdentity(identity.traits.system.tenants[0])).data;
-      context.logo = context.tenant.traits.branding ? context.tenant.id : 'favicon';
+      context.logo = context.tenant.traits.branding ? (`icons/${context.tenant.id}.png`) : ('images/favicon.png');
       /// todo: this should be populated from backend
       context.services = context.tenant.traits.services.map((s : any) => {
         return { name: s.name, url: (services as any)[s.name].url };
       });
       break;
   }
+  // Create a logout URL
+  const {
+    data: { logout_url: logoutUrl }
+  } = await kratos.createSelfServiceLogoutFlowUrlForBrowsers(
+    req.header('Cookie')
+  );
+  context.logoutUrl = logoutUrl;
   res.render(page, context);
 };

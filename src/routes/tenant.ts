@@ -90,12 +90,13 @@ export const updateServices = async (req: Request, res: Response) => {
 export const updateUserData = async (req: Request, tenantId: string, user: Identity) => {
   const svcs: string[] = await generatePacFile(req, user);
   const traits: any = user.traits;
-  const updateIdentity: AdminUpdateIdentityBody = { schema_id: user.schema_id, traits: traits, state: IdentityState.Active };
+  const updateIdentity: AdminUpdateIdentityBody = { traits: traits, state: user.state ?? IdentityState.Active };
 
   try {
     console.log('Updating identity');
     const updateIdentityResponse = await kratos.adminUpdateIdentity(user.id, updateIdentity);
     user = updateIdentityResponse.data;
+    console.log('Updated identity');
   } catch (err) {
     console.error('Failed to update identity: ' + err);
   }
